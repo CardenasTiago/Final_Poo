@@ -10,9 +10,11 @@ public class MenuPrincipal extends JFrame {
     private JButton carrerasButton;
     private JButton informesButton;
     private ArrayList<Alumno> alumnos; // Añadido
+    private ArrayList<Carrera> carreras;
 
-    public MenuPrincipal(ArrayList<Alumno> alumnos) { // Recibe el ArrayList de alumnos
+    public MenuPrincipal(ArrayList<Alumno> alumnos, ArrayList<Carrera> carreras) { // Recibe el ArrayList de alumnos
         this.alumnos = alumnos; // Guarda la referencia al ArrayList
+        this.carreras = carreras;
         setTitle("Menú Principal");
         setSize(300, 200);
         setResizable(false);

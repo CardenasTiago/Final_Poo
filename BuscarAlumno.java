@@ -119,6 +119,8 @@ public class BuscarAlumno extends JFrame {
         });
 
         volverButton.addActionListener(e -> {
+            AgregarAlumno agregarAlumno = new AgregarAlumno(menuPrincipal, alumnos);
+            agregarAlumno.setVisible(true);
             dispose();
         });
     }

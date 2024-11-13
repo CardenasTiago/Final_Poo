@@ -173,8 +173,12 @@ public class AgregarAlumno extends JFrame {
         });
 
         buscarButton.addActionListener(e -> {
+            // Crea y muestra el frame de BuscarAlumno
             BuscarAlumno buscarAlumno = new BuscarAlumno(menuPrincipal, alumnos);
             buscarAlumno.setVisible(true);
+        
+            // Cierra el frame de AgregarAlumno
+            dispose();
         });
 
         volverButton.addActionListener(e -> {

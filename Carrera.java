@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class Carrera {
-    private Plan plan;
     private String nombre;
     private int cantCuatri;
     private ArrayList<Materia> materiasObligatorias;
@@ -11,23 +10,14 @@ public class Carrera {
     
     
     public Carrera(Plan tipoPlan, String nombre,int cantCuatri){
-        this.plan = tipoPlan;
         this.nombre = nombre;
         this.materiasObligatorias = new ArrayList<>();
         this.materiasOptativas = new ArrayList<>();
         this.cantCuatri = cantCuatri;
     }
     
-    public void setTipoPlan(Plan tipoPlan) {
-        this.plan = tipoPlan;
-    }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public Plan getTipoPlan() {
-        return plan;
     }
 
     public String getNombre() {
@@ -42,14 +32,9 @@ public class Carrera {
         return this.cantCuatri;
     }
     
-    @Override
-    public String toString(){
-        return "Nombre: " + this.nombre + "/n" + "Plan de estudio: " + plan;
-    }
-    
     public void addMateria(Materia materia){
         if(materia.getCuatri() >= 1 && materia.getCuatri() <= this.cantCuatri){
-            if(materia.obligatoria){
+            if(materia.getObligatoria()){
                 materiasObligatorias.add(materia);
             }else{
                 materiasOptativas.add(materia);

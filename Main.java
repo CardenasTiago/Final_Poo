@@ -4,7 +4,7 @@ public class Main {
     public static void main(String args[]){
         ArrayList<Alumno> alumnos = new ArrayList<>();
         ArrayList<Carrera> carreras = new ArrayList<>();
-        MenuPrincipal menuPrincipal = new MenuPrincipal(alumnos);
+        MenuPrincipal menuPrincipal = new MenuPrincipal(alumnos, carreras);
         menuPrincipal.setVisible(true);
     }
 }

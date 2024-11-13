@@ -1,18 +1,20 @@
 import java.util.ArrayList;
 
 public class Materia {
-    String nombre;
-    boolean obligatoria;
-    String nota;
-    boolean finalA;
-    int cuatri;
-    ArrayList <Materia> correlativas = new ArrayList<Materia>();
+    private String nombre;
+    private boolean obligatoria;
+    private Plan plan;
+    private String nota;
+    private boolean finalA;
+    private int cuatri;
+    private ArrayList <Materia> correlativas = new ArrayList<Materia>();
             
     public Materia(){
         
     }
-    public Materia(boolean obligatoria, String nota, boolean finalA, String nombre, int cuatri){
+    public Materia(boolean obligatoria, String nota, boolean finalA, String nombre, int cuatri, Plan plan){
         this.obligatoria = obligatoria;
+        this.plan = plan;
         this.nota = nota;
         this.finalA = finalA;
         this.nombre = nombre;
@@ -22,9 +24,17 @@ public class Materia {
     public void setNombre(String nombre){
         this.nombre = nombre;
     }
-    
+
     public String getNombre(){
         return this.nombre;
+    }
+
+    public void setPlan(Plan plan){
+        this.plan = plan;
+    }
+    
+    public Plan getPlan(){
+        return this.plan;
     }
             
     public void setObligatoria(boolean obligatoria){
@@ -34,6 +44,7 @@ public class Materia {
     public boolean getObligatoria(){
         return this.obligatoria;
     }
+
     
     public void setNota (String nota){
         this.nota = nota;
