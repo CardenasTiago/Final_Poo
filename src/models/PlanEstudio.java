@@ -1,7 +1,5 @@
 package models;
 
-import java.util.*;
-
 public enum PlanEstudio {
     PLAN_A("Plan A - Cursadas de correlativas"),
     PLAN_B("Plan B - Finales de correlativas"),
