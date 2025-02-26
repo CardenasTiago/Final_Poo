@@ -52,14 +52,8 @@ class GestionNotas extends JDialog {
             Estudiante estudiante = (Estudiante) comboEstudiantes.getSelectedItem();
             Materia materia = (Materia) comboMaterias.getSelectedItem();
             if (estudiante != null && materia != null) {
-                NotaMateria notas = estudiante.getNotas(materia);
-                if (notas != null) {
-                    campoParcial.setText(String.valueOf(notas.getNotaParcial()));
-                    campoFinal.setText(String.valueOf(notas.getNotaFinal()));
-                } else {
-                    campoParcial.setText("");
-                    campoFinal.setText("");
-                }
+                campoParcial.setText(String.valueOf(materia.getNotaParcial()));
+                campoFinal.setText(String.valueOf(materia.getNotaFinal()));
                 checkPromocion.setSelected(materia.getTienePromocion());
             }
         });

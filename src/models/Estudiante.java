@@ -9,7 +9,6 @@ public class Estudiante {
     private List<Materia> materiasAprobadas;
     private List<Materia> finalesAprobados;
     private Carrera carrera;
-    private Map<Materia, NotaMateria> notas;
 
     public Estudiante(int legajo, String nombre) {
         this.legajo = legajo;
@@ -17,7 +16,6 @@ public class Estudiante {
         this.materiasInscriptas = new ArrayList<>();
         this.materiasAprobadas = new ArrayList<>();
         this.finalesAprobados = new ArrayList<>();
-        this.notas = new HashMap<>();
     }
 
     // Getters y setters
@@ -47,8 +45,7 @@ public class Estudiante {
     }
 
     public void registrarNota(Materia materia, double notaParcial) {
-        notas.putIfAbsent(materia, new NotaMateria());
-        notas.get(materia).setNotaParcial(notaParcial);
+        materia.setNotaParcial(notaParcial);
 
         // Si promociona, automáticamente aprueba la materia
         if (materia.getTienePromocion() && notaParcial >= 7) {
@@ -57,11 +54,9 @@ public class Estudiante {
     }
 
     public void registrarNotaFinal(Materia materia, double notaFinal) {
-        if (notas.containsKey(materia)) {
-            notas.get(materia).setNotaFinal(notaFinal);
-            if (notaFinal >= 4) {
-                aprobarFinal(materia);
-            }
+        materia.setNotaFinal(notaFinal);
+        if (notaFinal >= 4) {
+            aprobarFinal(materia);
         }
     }
 
@@ -70,17 +65,11 @@ public class Estudiante {
         finalesAprobados.add(materia); // La promoción implica aprobar el final
     }
 
-    public NotaMateria getNotas(Materia materia) {
-        return notas.get(materia);
-    }
-
     public boolean tieneParcialAprobado(Materia materia) {
-        NotaMateria nota = notas.get(materia);
-        return nota != null && nota.getNotaParcial() >= 4;
+        return materia.getNotaParcial() >= 4;
     }
 
     public boolean tienePromocion(Materia materia) {
-        NotaMateria nota = notas.get(materia);
-        return nota != null && nota.getNotaParcial() >= 7 && materia.getTienePromocion();
+        return materia.getNotaParcial() >= 7 && materia.getTienePromocion();
     }
 }

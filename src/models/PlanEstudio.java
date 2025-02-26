@@ -1,17 +1,43 @@
 package models;
 
-public enum PlanEstudio {
-    PLAN_A("Plan A - Cursadas de correlativas"),
-    PLAN_B("Plan B - Finales de correlativas"),
-    PLAN_C("Plan C - Cursadas correlativas + finales 5 cuatrimestres"),
-    PLAN_D("Plan D - Cursadas correlativas + finales 3 cuatrimestres"),
-    PLAN_E("Plan E - Finales correlativas + finales 3 cuatrimestres");
+import java.util.ArrayList;
+import java.util.List;
 
-    private final String descripcion;
+public abstract class PlanEstudio {
+    private String descripcion;
+    private List<Materia> materiasObligatorias;
+    private List<Materia> materiasOptativas;
 
-    PlanEstudio(String descripcion) {
+    public PlanEstudio(String descripcion) {
         this.descripcion = descripcion;
+        this.materiasObligatorias = new ArrayList<>();
+        this.materiasOptativas = new ArrayList<>();
     }
+
+    public void agregarMateriaObligatoria(Materia materia) {
+        materiasObligatorias.add(materia);
+    }
+
+    public void agregarMateriaOptativa(Materia materia) {
+        materiasOptativas.add(materia);
+    }
+
+    public List<Materia> getMateriasObligatorias() {
+        return materiasObligatorias;
+    }
+
+    public List<Materia> getMateriasOptativas() {
+        return materiasOptativas;
+    }
+
+    public List<Materia> getTodasLasMaterias() {
+        List<Materia> todasLasMaterias = new ArrayList<>();
+        todasLasMaterias.addAll(materiasObligatorias);
+        todasLasMaterias.addAll(materiasOptativas);
+        return todasLasMaterias;
+    }
+
+    public abstract boolean puedeRecursarMateria(Estudiante estudiante, Materia materia);
 
     @Override
     public String toString() {

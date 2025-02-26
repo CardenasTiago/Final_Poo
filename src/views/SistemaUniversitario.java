@@ -16,14 +16,15 @@ public class SistemaUniversitario extends JFrame {
 
     private List<Estudiante> estudiantes;
     private List<Carrera> carreras;
-    
+    private List<PlanEstudio> planesEstudio;
+
     public SistemaUniversitario() {
         configurarVentana();
         inicializarListas();
         inicializarDatosPrueba();
         crearInterfaz();
     }
-    
+
     private void configurarVentana() {
         setTitle("Sistema de Gestión Universitaria");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,22 +32,23 @@ public class SistemaUniversitario extends JFrame {
         setLocationRelativeTo(null);
         getContentPane().setBackground(COLOR_FONDO);
     }
-    
+
     private void inicializarListas() {
         estudiantes = new ArrayList<>();
         carreras = new ArrayList<>();
+        planesEstudio = new ArrayList<>();
     }
-    
+
     private void crearInterfaz() {
         // Panel principal con GridBagLayout
         JPanel mainPanel = new JPanel(new GridBagLayout());
         mainPanel.setBackground(COLOR_FONDO);
         mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        
+
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.insets = new Insets(5, 5, 5, 5);
-        
+
         // Título
         JLabel titulo = new JLabel("Sistema de Gestión Universitaria", SwingConstants.CENTER);
         titulo.setFont(new Font("Arial", Font.BOLD, 24));
@@ -55,11 +57,11 @@ public class SistemaUniversitario extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = 0;
         mainPanel.add(titulo, gbc);
-        
+
         // Panel de botones
         JPanel botonesPanel = new JPanel(new GridLayout(3, 2, 10, 10));
         botonesPanel.setBackground(COLOR_FONDO);
-        
+
         // Crear botones con estilo moderno oscuro
         JButton[] botones = {
             crearBoton("Agregar Estudiante", e -> new AgregarEstudiante(this)),
@@ -69,20 +71,20 @@ public class SistemaUniversitario extends JFrame {
             crearBoton("Verificar Finalización", e -> verificarFinalizacionCarrera()),
             crearBoton("Gestionar Notas", e -> new GestionNotas(this).setVisible(true))
         };
-        
+
         for (JButton boton : botones) {
             botonesPanel.add(boton);
         }
-        
+
         gbc.gridy = 1;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
         mainPanel.add(botonesPanel, gbc);
-        
+
         // Agregar panel principal
         add(mainPanel);
     }
-    
+
     private JButton crearBoton(String texto, java.awt.event.ActionListener listener) {
         JButton boton = new JButton(texto);
         boton.setFont(new Font("Arial", Font.BOLD, 14));
@@ -95,7 +97,7 @@ public class SistemaUniversitario extends JFrame {
         boton.setForeground(COLOR_TEXTO);
         boton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         boton.addActionListener(listener);
-        
+
         // Efectos hover
         boton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -105,44 +107,59 @@ public class SistemaUniversitario extends JFrame {
                 boton.setBackground(COLOR_BOTON);
             }
         });
-        
+
         return boton;
     }
-    
+
     private void inicializarDatosPrueba() {
         // Crear algunas materias
         Materia prog1 = new Materia("PRG1", "Programación I", true, 1);
         Materia mate1 = new Materia("MAT1", "Matemática I", true, 1);
         Materia prog2 = new Materia("PRG2", "Programación II", true, 2);
         prog2.agregarCorrelativa(prog1);
-        
-        // Crear una carrera
-        Carrera sistemas = new Carrera("Licenciatura en Sistemas", PlanEstudio.PLAN_A, 2);
-        sistemas.agregarMateriaObligatoria(prog1);
-        sistemas.agregarMateriaObligatoria(mate1);
-        sistemas.agregarMateriaObligatoria(prog2);
+
+        // Crear un plan de estudio (Plan A)
+        PlanEstudio planA = new PlanA();
+        planA.agregarMateriaObligatoria(prog1);
+        planA.agregarMateriaObligatoria(mate1);
+        planA.agregarMateriaObligatoria(prog2);
+
+        // Crear una carrera con el plan de estudio
+        Carrera sistemas = new Carrera("Licenciatura en Sistemas", planA, 2);
         carreras.add(sistemas);
-        
+
         // Crear un estudiante
         Estudiante estudiante = new Estudiante(1001, "Juan Pérez");
         estudiante.setCarrera(sistemas);
         estudiantes.add(estudiante);
+
+        // Agregar planes de estudio
+        planesEstudio.add(planA);
     }
-    
-    public List<Estudiante> getEstudiantes() { return estudiantes; }
-    public List<Carrera> getCarreras() { return carreras; }
-    
+
+    public List<Estudiante> getEstudiantes() {
+        return estudiantes;
+    }
+
+    public List<Carrera> getCarreras() {
+        return carreras;
+    }
+
+    public List<PlanEstudio> getPlanesEstudio() {
+        return planesEstudio;
+    }
+
     private void verificarFinalizacionCarrera() {
         if (estudiantes.isEmpty()) {
             mostrarMensaje("No hay estudiantes registrados");
             return;
         }
-        
+
         // Personalizar el JOptionPane para el tema oscuro
         UIManager.put("OptionPane.background", COLOR_FONDO);
         UIManager.put("Panel.background", COLOR_FONDO);
         UIManager.put("OptionPane.messageForeground", COLOR_TEXTO);
-        
+
         Estudiante estudiante = (Estudiante) JOptionPane.showInputDialog(
             this,
             "Seleccione un estudiante:",
@@ -152,7 +169,7 @@ public class SistemaUniversitario extends JFrame {
             estudiantes.toArray(),
             estudiantes.get(0)
         );
-        
+
         if (estudiante != null) {
             boolean completado = estudiante.getCarrera().haCompletado(estudiante);
             String mensaje = completado ?
@@ -161,18 +178,25 @@ public class SistemaUniversitario extends JFrame {
             mostrarMensaje(mensaje);
         }
     }
-    
+
     private void mostrarMensaje(String mensaje) {
         // Configurar el look and feel de los diálogos
         UIManager.put("OptionPane.background", COLOR_FONDO);
         UIManager.put("Panel.background", COLOR_FONDO);
         UIManager.put("OptionPane.messageForeground", COLOR_TEXTO);
-        
+
         JOptionPane.showMessageDialog(
             this,
             mensaje,
             "Información",
             JOptionPane.INFORMATION_MESSAGE
         );
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            SistemaUniversitario sistema = new SistemaUniversitario();
+            sistema.setVisible(true);
+        });
     }
 }

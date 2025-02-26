@@ -9,6 +9,9 @@ public class Materia {
     private int cuatrimestre;
     private List<Materia> correlativas;
     private boolean tienePromocion;
+    private double notaParcial;
+    private double notaFinal;
+    private boolean promocionado;
 
     public Materia(String codigo, String nombre, boolean obligatoria, int cuatrimestre) {
         this.codigo = codigo;
@@ -17,6 +20,9 @@ public class Materia {
         this.cuatrimestre = cuatrimestre;
         this.correlativas = new ArrayList<>();
         this.tienePromocion = false;
+        this.notaParcial = 0;
+        this.notaFinal = 0;
+        this.promocionado = false;
     }
 
     // Getters y setters
@@ -26,17 +32,17 @@ public class Materia {
     public int getCuatrimestre() { return cuatrimestre; }
     public List<Materia> getCorrelativas() { return correlativas; }
     public void agregarCorrelativa(Materia materia) { correlativas.add(materia); }
+    public boolean getTienePromocion() { return tienePromocion; }
+    public void setTienePromocion(boolean tienePromocion) { this.tienePromocion = tienePromocion; }
+    public double getNotaParcial() { return notaParcial; }
+    public void setNotaParcial(double notaParcial) { this.notaParcial = notaParcial; }
+    public double getNotaFinal() { return notaFinal; }
+    public void setNotaFinal(double notaFinal) { this.notaFinal = notaFinal; }
+    public boolean isPromocionado() { return promocionado; }
+    public void setPromocionado(boolean promocionado) { this.promocionado = promocionado; }
 
     @Override
     public String toString() {
         return codigo + " - " + nombre;
-    }
-
-    public void setTienePromocion(boolean tienePromocion) {
-        this.tienePromocion = tienePromocion;
-    }
-
-    public boolean getTienePromocion() {
-        return tienePromocion;
     }
 }
