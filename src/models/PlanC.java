@@ -1,8 +1,8 @@
 package models;
 
 public class PlanC extends PlanEstudio {
-    public PlanC() {
-        super("Plan C - Aprobó las cursadas de las correlativas y los finales de todas las materias de 5 cuatrimestres previos");
+    public PlanC(String descripcion) {
+        super(descripcion); // Descripción personalizada
     }
 
     @Override

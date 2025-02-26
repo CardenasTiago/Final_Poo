@@ -68,19 +68,35 @@ class GestionNotas extends JDialog {
                 Estudiante estudiante = (Estudiante) comboEstudiantes.getSelectedItem();
                 Materia materia = (Materia) comboMaterias.getSelectedItem();
                 if (estudiante != null && materia != null) {
-                    materia.setTienePromocion(checkPromocion.isSelected());
-
+                    // Guardar notas
                     if (!campoParcial.getText().isEmpty()) {
                         double notaParcial = Double.parseDouble(campoParcial.getText());
-                        estudiante.registrarNota(materia, notaParcial);
+                        materia.setNotaParcial(notaParcial);
                     }
 
                     if (!campoFinal.getText().isEmpty()) {
                         double notaFinal = Double.parseDouble(campoFinal.getText());
-                        estudiante.registrarNotaFinal(materia, notaFinal);
+                        materia.setNotaFinal(notaFinal);
                     }
 
-                    JOptionPane.showMessageDialog(this, "Notas guardadas exitosamente");
+                    materia.setTienePromocion(checkPromocion.isSelected());
+
+                    // Verificar si la materia está aprobada
+                    if (materia.getNotaFinal() >= 4 || materia.getNotaParcial() >= 4) {
+                        estudiante.aprobarMateria(materia); // Mover a aprobadas
+                        JOptionPane.showMessageDialog(this, "Materia aprobada y movida a la lista de aprobadas.");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Notas guardadas, pero la materia no está aprobada.");
+                    }
+
+                    // Actualizar la lista de materias disponibles
+                    modeloMaterias.removeAllElements();
+                    for (Materia m : estudiante.getMateriasInscriptas()) {
+                        modeloMaterias.addElement(m);
+                    }
+
+                    // Verificar si se desbloquean nuevas materias
+                    estudiante.actualizarMateriasDisponibles();
                 }
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(this,

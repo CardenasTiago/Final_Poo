@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 import javax.swing.*;
 import models.*;
 
-
 class InscripcionMateria extends JDialog {
     public InscripcionMateria(SistemaUniversitario parent) {
         super(parent, "Inscripción a Materia", true);
@@ -71,6 +70,25 @@ class InscripcionMateria extends JDialog {
             Materia materia = listaMaterias.getSelectedValue();
 
             if (estudiante != null && materia != null) {
+                // Verificar correlativas
+                boolean correlativasAprobadas = materia.getCorrelativas().stream()
+                        .allMatch(correlativa -> estudiante.getMateriasAprobadas().contains(correlativa));
+
+                if (!correlativasAprobadas) {
+                    JOptionPane.showMessageDialog(this,
+                            "No cumple con las correlativas necesarias para inscribirse a " + materia.getNombre());
+                    return;
+                }
+
+                // Verificar plan de estudio
+                PlanEstudio plan = estudiante.getCarrera().getPlanEstudio();
+                if (!plan.puedeRecursarMateria(estudiante, materia)) {
+                    JOptionPane.showMessageDialog(this,
+                            "No cumple con los requisitos del plan de estudio para inscribirse a " + materia.getNombre());
+                    return;
+                }
+
+                // Inscribir al estudiante
                 estudiante.inscribirEnMateria(materia);
                 JOptionPane.showMessageDialog(this,
                         "Inscripción exitosa a " + materia.getNombre());
@@ -95,6 +113,4 @@ class InscripcionMateria extends JDialog {
         setLocationRelativeTo(parent);
         setVisible(true);
     }
-
-
 }

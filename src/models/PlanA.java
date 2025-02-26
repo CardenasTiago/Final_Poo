@@ -1,8 +1,8 @@
 package models;
 
 public class PlanA extends PlanEstudio {
-    public PlanA() {
-        super("Plan A - Aprobó las cursadas de las correlativas");
+    public PlanA(String descripcion) {
+        super(descripcion); // Descripción personalizada
     }
 
     @Override

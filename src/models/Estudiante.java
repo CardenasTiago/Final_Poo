@@ -72,4 +72,24 @@ public class Estudiante {
     public boolean tienePromocion(Materia materia) {
         return materia.getNotaParcial() >= 7 && materia.getTienePromocion();
     }
+
+    public void aprobarMateria(Materia materia) {
+        if (materiasInscriptas.contains(materia)) {
+            materiasInscriptas.remove(materia);
+            materiasAprobadas.add(materia);
+        }
+    }
+
+
+    public void actualizarMateriasDisponibles() {
+        for (Materia materia : carrera.getPlanEstudio().getTodasLasMaterias()) {
+            if (!materiasInscriptas.contains(materia) && !materiasAprobadas.contains(materia)) {
+                boolean correlativasAprobadas = materia.getCorrelativas().stream()
+                        .allMatch(correlativa -> materiasAprobadas.contains(correlativa));
+                if (correlativasAprobadas) {
+                    materiasInscriptas.add(materia); // Desbloquear materia
+                }
+            }
+        }
+    }
 }

@@ -1,8 +1,8 @@
 package models;
 
 public class PlanE extends PlanEstudio {
-    public PlanE() {
-        super("Plan E - Aprobó los finales de las correlativas y los finales de todas las materias de 3 cuatrimestres previos");
+    public PlanE(String descripcion) {
+        super(descripcion); // Descripción personalizada
     }
 
     @Override
