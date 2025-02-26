@@ -5,45 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69a2a382-e565-4a1b-9bd6-34f49e887673" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/controllers/Controlador.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/Estudiante.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/NotaMateria.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/PlanEstudio.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/models/VerificadorPlanEstudio.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/AgregarCarrera.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/AgregarEstudiante.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/GestionNotas.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/InscribirEstudianteCarrera.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/InscripcionMateria.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/SistemaUniversitario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Alumno.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Alumno.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Carrera.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Carrera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Carrera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Materia.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Materia.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Materia.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Plan.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/Plan.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/PlanA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/PlanB.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/PlanC.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/PlanD.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/models/PlanE.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/AgregarAlumno$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/AgregarAlumno.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/AgregarAlumno.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/BuscarAlumno$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/BuscarAlumno.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/BuscarAlumno.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/MenuPrincipal$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/MenuPrincipal$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/MenuPrincipal$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/MenuPrincipal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/MenuPrincipal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/PlanE.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/PlanE.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/AgregarCarrera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/AgregarCarrera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/SistemaUniversitario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/SistemaUniversitario.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,27 +35,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/tiago/IdeaProjects/Final_Objetos/src/modelos",
-    "project.structure.last.edited": "Problems",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "project.propCompiler"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/tiago/IdeaProjects/Final_Objetos/src/modelos&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propCompiler&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "JAVA"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;JAVA&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />

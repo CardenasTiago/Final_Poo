@@ -1,8 +1,6 @@
 package views;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import models.*;
@@ -18,14 +16,10 @@ public class AgregarCarrera extends JDialog {
     private final JTextField nombreCarreraField;
     private final JSpinner optativasRequeridas;
     private final JComboBox<PlanEstudio> planEstudioCombo;
-    private final DefaultListModel<Materia> materiasObligatoriasListModel;
-    private final DefaultListModel<Materia> materiasOptativasListModel;
-    private final List<Materia> todasLasMaterias;
 
     public AgregarCarrera(SistemaUniversitario sistema) {
         super(sistema, "Agregar Carrera", true);
         this.sistema = sistema;
-        this.todasLasMaterias = new ArrayList<>();
 
         // Configurar ventana
         setLayout(new GridBagLayout());
@@ -81,118 +75,6 @@ public class AgregarCarrera extends JDialog {
         gbcDatos.gridx = 1;
         datosCarreraPanel.add(optativasRequeridas, gbcDatos);
 
-        // Panel para gestión de materias
-        JPanel materiasPanel = new JPanel(new GridBagLayout());
-        materiasPanel.setBorder(BorderFactory.createTitledBorder("Gestión de Materias"));
-        materiasPanel.setBackground(COLOR_FONDO);
-        ((TitledBorder) materiasPanel.getBorder()).setTitleColor(COLOR_TEXTO);
-
-        // Componentes para agregar nueva materia
-        JTextField codigoField = new JTextField(10);
-        JTextField nombreMateriaField = new JTextField(20);
-        JCheckBox promocionableCheck = new JCheckBox("Promocionable");
-        JSpinner anioSpinner = new JSpinner(new SpinnerNumberModel(1, 1, 6, 1));
-
-        // Estilo para componentes
-        codigoField.setBackground(COLOR_BOTON);
-        codigoField.setForeground(COLOR_TEXTO);
-        nombreMateriaField.setBackground(COLOR_BOTON);
-        nombreMateriaField.setForeground(COLOR_TEXTO);
-        promocionableCheck.setBackground(COLOR_FONDO);
-        promocionableCheck.setForeground(COLOR_TEXTO);
-        anioSpinner.setBackground(COLOR_BOTON);
-        ((JSpinner.DefaultEditor) anioSpinner.getEditor()).getTextField().setForeground(COLOR_TEXTO);
-
-        // Botón para agregar materia
-        JButton agregarMateriaBtn = crearBoton("Agregar Materia");
-        agregarMateriaBtn.addActionListener(e -> {
-            Materia nuevaMateria = new Materia(
-                codigoField.getText(),
-                nombreMateriaField.getText(),
-                promocionableCheck.isSelected(),
-                (int) anioSpinner.getValue()
-            );
-            todasLasMaterias.add(nuevaMateria);
-            actualizarListasMaterias();
-
-            // Limpiar campos
-            codigoField.setText("");
-            nombreMateriaField.setText("");
-            promocionableCheck.setSelected(false);
-            anioSpinner.setValue(1);
-        });
-
-        // Listas de materias
-        materiasObligatoriasListModel = new DefaultListModel<>();
-        materiasOptativasListModel = new DefaultListModel<>();
-
-        JList<Materia> materiasObligatoriasList = new JList<>(materiasObligatoriasListModel);
-        JList<Materia> materiasOptativasList = new JList<>(materiasOptativasListModel);
-
-        // Estilo para las listas
-        materiasObligatoriasList.setBackground(COLOR_BOTON);
-        materiasObligatoriasList.setForeground(COLOR_TEXTO);
-        materiasOptativasList.setBackground(COLOR_BOTON);
-        materiasOptativasList.setForeground(COLOR_TEXTO);
-
-        // Botones para mover materias
-        JButton hacerObligatoriaBtn = crearBoton("←  Hacer Obligatoria");
-        JButton hacerOptativaBtn = crearBoton("→ Hacer Optativa");
-
-        hacerObligatoriaBtn.addActionListener(e -> {
-            Materia selected = materiasOptativasList.getSelectedValue();
-            if (selected != null) {
-                materiasOptativasListModel.removeElement(selected);
-                materiasObligatoriasListModel.addElement(selected);
-            }
-        });
-
-        hacerOptativaBtn.addActionListener(e -> {
-            Materia selected = materiasObligatoriasList.getSelectedValue();
-            if (selected != null) {
-                materiasObligatoriasListModel.removeElement(selected);
-                materiasOptativasListModel.addElement(selected);
-            }
-        });
-
-        // Agregar componentes al panel de materias
-        GridBagConstraints gbcMaterias = new GridBagConstraints();
-        gbcMaterias.insets = new Insets(5, 5, 5, 5);
-        gbcMaterias.fill = GridBagConstraints.HORIZONTAL;
-
-        // Primera fila: campos de nueva materia
-        gbcMaterias.gridx = 0; gbcMaterias.gridy = 0;
-        materiasPanel.add(new JLabel("Código:"), gbcMaterias);
-        gbcMaterias.gridx = 1;
-        materiasPanel.add(codigoField, gbcMaterias);
-        gbcMaterias.gridx = 2;
-        materiasPanel.add(new JLabel("Nombre:"), gbcMaterias);
-        gbcMaterias.gridx = 3;
-        materiasPanel.add(nombreMateriaField, gbcMaterias);
-
-        // Segunda fila: más campos de nueva materia
-        gbcMaterias.gridx = 0; gbcMaterias.gridy = 1;
-        materiasPanel.add(new JLabel("Año:"), gbcMaterias);
-        gbcMaterias.gridx = 1;
-        materiasPanel.add(anioSpinner, gbcMaterias);
-        gbcMaterias.gridx = 2;
-        materiasPanel.add(promocionableCheck, gbcMaterias);
-        gbcMaterias.gridx = 3;
-        materiasPanel.add(agregarMateriaBtn, gbcMaterias);
-
-        // Tercera fila: listas de materias
-        gbcMaterias.gridx = 0; gbcMaterias.gridy = 2;
-        gbcMaterias.gridwidth = 2;
-        materiasPanel.add(new JScrollPane(materiasObligatoriasList), gbcMaterias);
-        gbcMaterias.gridx = 2;
-        materiasPanel.add(new JScrollPane(materiasOptativasList), gbcMaterias);
-
-        // Cuarta fila: botones de movimiento
-        gbcMaterias.gridx = 0; gbcMaterias.gridy = 3;
-        materiasPanel.add(hacerOptativaBtn, gbcMaterias);
-        gbcMaterias.gridx = 2;
-        materiasPanel.add(hacerObligatoriaBtn, gbcMaterias);
-
         // Botón guardar carrera
         JButton guardarCarreraBtn = crearBoton("Guardar Carrera");
         guardarCarreraBtn.addActionListener(e -> guardarCarrera());
@@ -202,9 +84,6 @@ public class AgregarCarrera extends JDialog {
         add(datosCarreraPanel, gbc);
 
         gbc.gridy = 1;
-        add(materiasPanel, gbc);
-
-        gbc.gridy = 2;
         add(guardarCarreraBtn, gbc);
 
         // Configuración final de la ventana
@@ -226,22 +105,9 @@ public class AgregarCarrera extends JDialog {
         return boton;
     }
 
-    private void actualizarListasMaterias() {
-        materiasObligatoriasListModel.clear();
-        materiasOptativasListModel.clear();
-        for (Materia materia : todasLasMaterias) {
-            materiasObligatoriasListModel.addElement(materia);
-        }
-    }
-
     private void guardarCarrera() {
         if (nombreCarreraField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Debe ingresar un nombre para la carrera");
-            return;
-        }
-
-        if (materiasObligatoriasListModel.isEmpty() && materiasOptativasListModel.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Debe agregar al menos una materia");
             return;
         }
 
@@ -250,16 +116,6 @@ public class AgregarCarrera extends JDialog {
             (PlanEstudio) planEstudioCombo.getSelectedItem(),
             (int) optativasRequeridas.getValue()
         );
-
-        // Agregar materias obligatorias
-        for (int i = 0; i < materiasObligatoriasListModel.size(); i++) {
-            nuevaCarrera.agregarMateriaObligatoria(materiasObligatoriasListModel.getElementAt(i));
-        }
-
-        // Agregar materias optativas
-        for (int i = 0; i < materiasOptativasListModel.size(); i++) {
-            nuevaCarrera.agregarMateriaOptativa(materiasOptativasListModel.getElementAt(i));
-        }
 
         sistema.getCarreras().add(nuevaCarrera);
         JOptionPane.showMessageDialog(this, "Carrera agregada exitosamente");

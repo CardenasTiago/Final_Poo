@@ -63,14 +63,16 @@ public class SistemaUniversitario extends JFrame {
         botonesPanel.setBackground(COLOR_FONDO);
 
         // Crear botones con estilo moderno oscuro
-        JButton[] botones = {
-            crearBoton("Agregar Estudiante", e -> new AgregarEstudiante(this)),
-            crearBoton("Agregar Carrera", e -> new AgregarCarrera(this)),
-            crearBoton("Inscribir en Carrera", e -> new InscribirEstudianteCarrera(this)),
-            crearBoton("Inscribir en Materia", e -> new InscripcionMateria(this)),
-            crearBoton("Verificar Finalización", e -> verificarFinalizacionCarrera()),
-            crearBoton("Gestionar Notas", e -> new GestionNotas(this).setVisible(true))
-        };
+// En el método crearInterfaz de SistemaUniversitario:
+    JButton[] botones = {
+        crearBoton("Agregar Estudiante", e -> new AgregarEstudiante(this)),
+        crearBoton("Agregar Carrera", e -> new AgregarCarrera(this)),
+        crearBoton("Crear Plan de Estudio", e -> new CrearPlanEstudio(this)), // Nuevo botón
+        crearBoton("Inscribir en Carrera", e -> new InscribirEstudianteCarrera(this)),
+        crearBoton("Inscribir en Materia", e -> new InscripcionMateria(this)),
+        crearBoton("Verificar Finalización", e -> verificarFinalizacionCarrera()),
+        crearBoton("Gestionar Notas", e -> new GestionNotas(this).setVisible(true))
+    };
 
         for (JButton boton : botones) {
             botonesPanel.add(boton);
