@@ -6,24 +6,24 @@ public class Estudiante {
     private int legajo;
     private String nombre;
     private List<Materia> materiasInscriptas;
-    private List<Materia> materiasAprobadas;
-    private List<Materia> finalesAprobados;
+    private List<Materia> cursadaAprobadas;
+    private List<Materia> materiasAprobados;
     private Carrera carrera;
 
     public Estudiante(int legajo, String nombre) {
         this.legajo = legajo;
         this.nombre = nombre;
         this.materiasInscriptas = new ArrayList<>();
-        this.materiasAprobadas = new ArrayList<>();
-        this.finalesAprobados = new ArrayList<>();
+        this.cursadaAprobadas = new ArrayList<>();
+        this.materiasAprobados = new ArrayList<>();
     }
 
     // Getters y setters
     public int getLegajo() { return legajo; }
     public String getNombre() { return nombre; }
     public List<Materia> getMateriasInscriptas() { return materiasInscriptas; }
-    public List<Materia> getMateriasAprobadas() { return materiasAprobadas; }
-    public List<Materia> getFinalesAprobados() { return finalesAprobados; }
+    public List<Materia> getCursadaAprobadas() { return cursadaAprobadas; }
+    public List<Materia> getMateriasAprobadas() { return materiasAprobados; }
     public Carrera getCarrera() { return carrera; }
     public void setCarrera(Carrera carrera) { this.carrera = carrera; }
 
@@ -32,11 +32,11 @@ public class Estudiante {
     }
 
     public void aprobarCursada(Materia materia) {
-        materiasAprobadas.add(materia);
+        cursadaAprobadas.add(materia);
     }
 
     public void aprobarFinal(Materia materia) {
-        finalesAprobados.add(materia);
+        materiasAprobados.add(materia);
     }
 
     @Override
@@ -61,8 +61,8 @@ public class Estudiante {
     }
 
     public void aprobarPorPromocion(Materia materia) {
-        materiasAprobadas.add(materia);
-        finalesAprobados.add(materia); // La promoción implica aprobar el final
+        cursadaAprobadas.add(materia);
+        materiasAprobados.add(materia); // La promoción implica aprobar el final
     }
 
     public boolean tieneParcialAprobado(Materia materia) {
@@ -76,16 +76,16 @@ public class Estudiante {
     public void aprobarMateria(Materia materia) {
         if (materiasInscriptas.contains(materia)) {
             materiasInscriptas.remove(materia);
-            materiasAprobadas.add(materia);
+            cursadaAprobadas.add(materia);
         }
     }
 
 
     public void actualizarMateriasDisponibles() {
         for (Materia materia : carrera.getPlanEstudio().getTodasLasMaterias()) {
-            if (!materiasInscriptas.contains(materia) && !materiasAprobadas.contains(materia)) {
+            if (!materiasInscriptas.contains(materia) && !cursadaAprobadas.contains(materia)) {
                 boolean correlativasAprobadas = materia.getCorrelativas().stream()
-                        .allMatch(correlativa -> materiasAprobadas.contains(correlativa));
+                        .allMatch(correlativa -> cursadaAprobadas.contains(correlativa));
                 if (correlativasAprobadas) {
                     materiasInscriptas.add(materia); // Desbloquear materia
                 }

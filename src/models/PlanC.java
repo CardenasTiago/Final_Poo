@@ -12,7 +12,7 @@ public class PlanC extends PlanEstudio {
 
         boolean finalesAprobados = estudiante.getCarrera().getTodasLasMaterias().stream()
                 .filter(m -> m.getCuatrimestre() <= materia.getCuatrimestre() - 5)
-                .allMatch(m -> estudiante.getFinalesAprobados().contains(m));
+                .allMatch(m -> estudiante.getMateriasAprobadas().contains(m));
 
         return correlativasAprobadas && finalesAprobados;
     }

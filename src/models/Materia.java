@@ -32,6 +32,7 @@ public class Materia {
     public int getCuatrimestre() { return cuatrimestre; }
     public List<Materia> getCorrelativas() { return correlativas; }
     public void agregarCorrelativa(Materia materia) { correlativas.add(materia); }
+    public boolean eliminarCorrelativa(Materia materia) {return correlativas.remove(materia);}
     public boolean getTienePromocion() { return tienePromocion; }
     public void setTienePromocion(boolean tienePromocion) { this.tienePromocion = tienePromocion; }
     public double getNotaParcial() { return notaParcial; }

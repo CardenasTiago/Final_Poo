@@ -11,15 +11,32 @@ class AgregarEstudiante extends JDialog {
     public AgregarEstudiante(SistemaUniversitario parent) {
         super(parent, "Agregar Estudiante", true);
         setLayout(new BorderLayout(5, 5));
+        setSize(500, 350); // Tamaño fijo
+        setLocationRelativeTo(parent); // Centrar la ventana
+        getContentPane().setBackground(SistemaUniversitario.COLOR_FONDO);
 
         // Panel de entrada de datos
         JPanel panelEntrada = new JPanel(new GridLayout(3, 2, 5, 5));
-        JTextField campoLegajo = new JTextField();
-        JTextField campoNombre = new JTextField();
+        panelEntrada.setBackground(SistemaUniversitario.COLOR_FONDO);
 
-        panelEntrada.add(new JLabel("Legajo:"));
+        // Etiqueta "Legajo" con color blanco
+        JLabel legajoLabel = new JLabel("Legajo:");
+        legajoLabel.setForeground(Color.WHITE); // Color blanco
+        panelEntrada.add(legajoLabel);
+
+        JTextField campoLegajo = new JTextField();
+        campoLegajo.setBackground(SistemaUniversitario.COLOR_FONDO);
+        campoLegajo.setForeground(Color.WHITE);
         panelEntrada.add(campoLegajo);
-        panelEntrada.add(new JLabel("Nombre:"));
+
+        // Etiqueta "Nombre" con color blanco
+        JLabel nombreLabel = new JLabel("Nombre:");
+        nombreLabel.setForeground(Color.WHITE); // Color blanco
+        panelEntrada.add(nombreLabel);
+
+        JTextField campoNombre = new JTextField();
+        campoNombre.setBackground(SistemaUniversitario.COLOR_FONDO);
+        campoNombre.setForeground(Color.WHITE);
         panelEntrada.add(campoNombre);
 
         JButton botonAgregar = new JButton("Agregar");
@@ -54,8 +71,6 @@ class AgregarEstudiante extends JDialog {
         actualizarListaEstudiantes(parent);
 
         // Ajustar tamaño y hacer visible el diálogo
-        pack();
-        setLocationRelativeTo(parent);
         setVisible(true);
     }
 

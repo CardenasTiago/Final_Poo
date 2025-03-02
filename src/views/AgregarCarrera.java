@@ -21,8 +21,12 @@ public class AgregarCarrera extends JDialog {
         super(sistema, "Agregar Carrera", true);
         this.sistema = sistema;
 
-        // Configurar ventana
         setLayout(new GridBagLayout());
+        setSize(800, 300); // Tamaño fijo
+        setMinimumSize(new Dimension(500, 300)); // Tamaño mínimo
+        setLocationRelativeTo(sistema); // Centrar la ventana
+        getContentPane().setBackground(COLOR_FONDO);
+
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(5, 5, 5, 5);
         gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -53,7 +57,13 @@ public class AgregarCarrera extends JDialog {
         optativasLabel.setForeground(COLOR_TEXTO);
         optativasRequeridas = new JSpinner(new SpinnerNumberModel(2, 0, 10, 1));
         optativasRequeridas.setBackground(COLOR_BOTON);
-        ((JSpinner.DefaultEditor) optativasRequeridas.getEditor()).getTextField().setForeground(COLOR_TEXTO);
+
+        // Acceder al campo de texto interno del JSpinner y configurar sus colores
+        JSpinner.DefaultEditor editor = (JSpinner.DefaultEditor) optativasRequeridas.getEditor();
+        JTextField textField = editor.getTextField();
+        textField.setForeground(COLOR_TEXTO); // Color del texto
+        textField.setBackground(COLOR_BOTON); // Color de fondo
+        textField.setCaretColor(COLOR_TEXTO); // Color del cursor
 
         // Agregar componentes al panel de datos
         GridBagConstraints gbcDatos = new GridBagConstraints();
@@ -87,8 +97,6 @@ public class AgregarCarrera extends JDialog {
         add(guardarCarreraBtn, gbc);
 
         // Configuración final de la ventana
-        pack();
-        setLocationRelativeTo(sistema);
         setVisible(true);
     }
 

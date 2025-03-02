@@ -8,6 +8,6 @@ public class PlanB extends PlanEstudio {
     @Override
     public boolean puedeRecursarMateria(Estudiante estudiante, Materia materia) {
         return materia.getCorrelativas().stream()
-                .allMatch(correlativa -> estudiante.getFinalesAprobados().contains(correlativa));
+                .allMatch(correlativa -> estudiante.getMateriasAprobadas().contains(correlativa));
     }
 }

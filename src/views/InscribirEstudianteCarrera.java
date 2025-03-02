@@ -9,6 +9,9 @@ class InscribirEstudianteCarrera extends JDialog {
     public InscribirEstudianteCarrera(SistemaUniversitario parent) {
         super(parent, "Inscribir Estudiante en Carrera", true);
         setLayout(new BorderLayout(10, 10));
+        setSize(500, 400); // Tamaño fijo
+        setLocationRelativeTo(parent); // Centrar la ventana
+        getContentPane().setBackground(SistemaUniversitario.COLOR_FONDO);
 
         // Modelo para la lista de estudiantes
         DefaultListModel<Estudiante> estudianteModel = new DefaultListModel<>();
@@ -29,11 +32,13 @@ class InscribirEstudianteCarrera extends JDialog {
 
         // Panel de selección
         JPanel selectionPanel = new JPanel(new BorderLayout(5, 5));
+        selectionPanel.setBackground(SistemaUniversitario.COLOR_FONDO);
         selectionPanel.add(new JLabel("Seleccione un estudiante:"), BorderLayout.NORTH);
         selectionPanel.add(scrollEstudiantes, BorderLayout.CENTER);
 
         // Panel para carreras
         JPanel carreraPanel = new JPanel(new BorderLayout(5, 5));
+        carreraPanel.setBackground(SistemaUniversitario.COLOR_FONDO);
         carreraPanel.add(new JLabel("Seleccione una carrera:"), BorderLayout.NORTH);
         carreraPanel.add(comboCarrera, BorderLayout.CENTER);
 
@@ -56,6 +61,7 @@ class InscribirEstudianteCarrera extends JDialog {
 
         // Buscar estudiante
         JPanel searchPanel = new JPanel(new BorderLayout(5, 5));
+        searchPanel.setBackground(SistemaUniversitario.COLOR_FONDO);
         JTextField searchField = new JTextField();
         JButton searchButton = new JButton("Buscar");
         searchButton.addActionListener(e -> {
@@ -77,6 +83,7 @@ class InscribirEstudianteCarrera extends JDialog {
 
         // Agregar paneles al frame
         JPanel mainPanel = new JPanel(new BorderLayout(10, 10));
+        mainPanel.setBackground(SistemaUniversitario.COLOR_FONDO);
         mainPanel.add(selectionPanel, BorderLayout.NORTH);
         mainPanel.add(carreraPanel, BorderLayout.CENTER);
         mainPanel.add(botonInscribir, BorderLayout.SOUTH);
@@ -84,9 +91,6 @@ class InscribirEstudianteCarrera extends JDialog {
         add(searchPanel, BorderLayout.NORTH);
         add(mainPanel, BorderLayout.CENTER);
 
-        // Configuración final del diálogo
-        pack();
-        setLocationRelativeTo(parent);
         setVisible(true);
     }
 }

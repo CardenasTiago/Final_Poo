@@ -11,9 +11,13 @@ class InscripcionMateria extends JDialog {
     public InscripcionMateria(SistemaUniversitario parent) {
         super(parent, "Inscripción a Materia", true);
         setLayout(new BorderLayout(10, 10));
+        setSize(500, 600); // Tamaño fijo
+        setLocationRelativeTo(parent); // Centrar la ventana
+        getContentPane().setBackground(SistemaUniversitario.COLOR_FONDO);
 
         // Panel para selección de estudiante
         JPanel panelEstudiante = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        panelEstudiante.setBackground(SistemaUniversitario.COLOR_FONDO);
         JComboBox<Estudiante> comboEstudiantes = new JComboBox<>(
                 new Vector<>(parent.getEstudiantes())
         );
@@ -22,6 +26,7 @@ class InscripcionMateria extends JDialog {
 
         // Panel para lista de materias disponibles
         JPanel panelMaterias = new JPanel(new BorderLayout());
+        panelMaterias.setBackground(SistemaUniversitario.COLOR_FONDO);
         DefaultListModel<Materia> modeloMaterias = new DefaultListModel<>();
         JList<Materia> listaMaterias = new JList<>(modeloMaterias);
         panelMaterias.add(new JLabel("Materias Disponibles:"), BorderLayout.NORTH);
@@ -31,6 +36,7 @@ class InscripcionMateria extends JDialog {
         JTextArea areaInfo = new JTextArea(5, 40);
         areaInfo.setEditable(false);
         JPanel panelInfo = new JPanel(new BorderLayout());
+        panelInfo.setBackground(SistemaUniversitario.COLOR_FONDO);
         panelInfo.add(new JLabel("Información de la materia:"), BorderLayout.NORTH);
         panelInfo.add(new JScrollPane(areaInfo), BorderLayout.CENTER);
 
@@ -102,6 +108,7 @@ class InscripcionMateria extends JDialog {
         // Panel principal
         JPanel panelPrincipal = new JPanel(new BorderLayout(10, 10));
         panelPrincipal.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        panelPrincipal.setBackground(SistemaUniversitario.COLOR_FONDO);
         panelPrincipal.add(panelEstudiante, BorderLayout.NORTH);
         panelPrincipal.add(panelMaterias, BorderLayout.CENTER);
         panelPrincipal.add(panelInfo, BorderLayout.SOUTH);
@@ -109,8 +116,6 @@ class InscripcionMateria extends JDialog {
         add(panelPrincipal, BorderLayout.CENTER);
         add(botonInscribir, BorderLayout.SOUTH);
 
-        setSize(500, 600);
-        setLocationRelativeTo(parent);
         setVisible(true);
     }
 }

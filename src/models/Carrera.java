@@ -59,7 +59,7 @@ public class Carrera {
     public List<Materia> getMateriasDisponibles(Estudiante estudiante) {
         return getTodasLasMaterias().stream()
                 .filter(materia -> !estudiante.getMateriasInscriptas().contains(materia)) // No está inscripto
-                .filter(materia -> !estudiante.getFinalesAprobados().contains(materia))   // No la aprobó
+                .filter(materia -> !estudiante.getMateriasAprobadas().contains(materia))   // No la aprobó
                 .filter(materia -> planEstudio.puedeRecursarMateria(estudiante, materia)) // Puede recursar según el plan
                 .collect(Collectors.toList());
     }
@@ -75,11 +75,11 @@ public class Carrera {
 
         // Verifica si el estudiante aprobó todas las materias obligatorias
         boolean obligatoriasAprobadas = materiasObligatorias.stream()
-                .allMatch(materia -> estudiante.getFinalesAprobados().contains(materia));
+                .allMatch(materia -> estudiante.getMateriasAprobadas().contains(materia));
 
         // Cuenta cuántas materias optativas ha aprobado
         long optativasAprobadas = materiasOptativas.stream()
-                .filter(materia -> estudiante.getFinalesAprobados().contains(materia))
+                .filter(materia -> estudiante.getMateriasAprobadas().contains(materia))
                 .count();
 
         // Verifica si cumplió con las materias obligatorias y optativas requeridas
