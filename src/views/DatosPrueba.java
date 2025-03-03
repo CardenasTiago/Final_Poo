@@ -149,48 +149,48 @@ public class DatosPrueba {
         Materia introSociedadCulturaAmbiente = new Materia("ICA002", "Introducción al Estudio de la Sociedad, la Cultura y el Ambiente", true, 1);
         Materia matematica1 = new Materia("MA001", "Matemática I para Ciencias Naturales", true, 1);
         Materia quimicaGeneral = new Materia("QU001", "Química General e Inorgánica", true, 1);
-        Materia introProblematicaAmbiental = new Materia("ICA003", "Introducción a la Problemática Ambiental", true, 1);
-        Materia fisica1 = new Materia("FI001", "Física I para Ciencias Naturales", true, 1);
-        Materia matematica2 = new Materia("MA002", "Matemática II para Ciencias Naturales", true, 1);
-        Materia quimicaOrganica = new Materia("QU002", "Química Orgánica", true, 1);
+        Materia introProblematicaAmbiental = new Materia("ICA003", "Introducción a la Problemática Ambiental", true, 2);
+        Materia fisica1 = new Materia("FI001", "Física I para Ciencias Naturales", true, 2);
+        Materia matematica2 = new Materia("MA002", "Matemática II para Ciencias Naturales", true, 2);
+        Materia quimicaOrganica = new Materia("QU002", "Química Orgánica", true, 2);
 
         // Crear materias del segundo año
-        Materia introBiologia = new Materia("BIO001", "Introducción a la Biología", true, 2);
-        Materia introGeologia = new Materia("GEO001", "Introducción a la Geología", true, 2);
-        Materia sociedadAmbiente = new Materia("ICA004", "Sociedad y Ambiente", true, 2);
-        Materia legislacionAmbiental = new Materia("DER001", "Legislación Ambiental", true, 2);
-        Materia diversidadBiologica = new Materia("BIO002", "Diversidad Biológica", true, 2);
-        Materia geografiaFisica1 = new Materia("GEO002", "Geografía Física para Ciencias Ambientales", true, 2);
-        Materia economiaAmbiente = new Materia("ECO001", "Economía y Ambiente", true, 2);
-        Materia estadistica1 = new Materia("EST001", "Estadística I para Ciencias Naturales", true, 2);
+        Materia introBiologia = new Materia("BIO001", "Introducción a la Biología", true, 3);
+        Materia introGeologia = new Materia("GEO001", "Introducción a la Geología", true, 3);
+        Materia sociedadAmbiente = new Materia("ICA004", "Sociedad y Ambiente", true, 3);
+        Materia legislacionAmbiental = new Materia("DER001", "Legislación Ambiental", true, 3);
+        Materia diversidadBiologica = new Materia("BIO002", "Diversidad Biológica", true, 4);
+        Materia geografiaFisica1 = new Materia("GEO002", "Geografía Física para Ciencias Ambientales", true, 4);
+        Materia economiaAmbiente = new Materia("ECO001", "Economía y Ambiente", true, 4);
+        Materia estadistica1 = new Materia("EST001", "Estadística I para Ciencias Naturales", true, 4);
 
         // Crear materias del tercer año
-        Materia quimicaAmbiental = new Materia("QU003", "Química Ambiental y Contaminación", true, 3);
-        Materia energiasRenovables = new Materia("ICA005", "Energías Renovables", true, 3);
-        Materia ecologiaGeneral = new Materia("BIO003", "Ecología General", true, 3);
-        Materia comunicacionAmbiental = new Materia("ICA006", "Comunicación Ambiental", true, 3);
-        Materia hidrologia = new Materia("GEO003", "Hidrología y Gestión del Agua", true, 3);
-        Materia tecnicasTratamiento = new Materia("ICA007", "Técnicas de Tratamiento y Saneamiento", true, 3);
-        Materia filosofiaCiencia = new Materia("FIL001", "Filosofía, Epistemología y Metodología de la Ciencia", true, 3);
-        Materia teledeteccionSIG = new Materia("GEO004", "Teledetección y SIG", true, 3);
+        Materia quimicaAmbiental = new Materia("QU003", "Química Ambiental y Contaminación", true, 5);
+        Materia energiasRenovables = new Materia("ICA005", "Energías Renovables", true, 5);
+        Materia ecologiaGeneral = new Materia("BIO003", "Ecología General", true, 5);
+        Materia comunicacionAmbiental = new Materia("ICA006", "Comunicación Ambiental", true, 5);
+        Materia hidrologia = new Materia("GEO003", "Hidrología y Gestión del Agua", true, 6);
+        Materia tecnicasTratamiento = new Materia("ICA007", "Técnicas de Tratamiento y Saneamiento", true, 6);
+        Materia filosofiaCiencia = new Materia("FIL001", "Filosofía, Epistemología y Metodología de la Ciencia", true, 6);
+        Materia teledeteccionSIG = new Materia("GEO004", "Teledetección y SIG", true, 6);
 
         // Crear materias del cuarto año
-        Materia conservacionBiodiversidad = new Materia("BIO004", "Conservación de la Biodiversidad", true, 4);
-        Materia administracionAmbiental = new Materia("ICA008", "Administración Ambiental", true, 4);
-        Materia gestionAmbientesUrbanos = new Materia("ICA009", "Gestión de Ambientes Urbanos", true, 4);
-        Materia tallerMetodologia = new Materia("ICA010", "Taller de Metodología de la Investigación", true, 4);
-        Materia gestionAmbientesRurales = new Materia("ICA011", "Gestión de Ambientes Rurales", true, 4);
-        Materia gestionRecursosNaturales = new Materia("ICA012", "Gestión Integral de Recursos Naturales", true, 4);
-        Materia cambioGlobal = new Materia("ICA013", "Cambio Global", true, 4);
-        Materia seminarioFueguino = new Materia("ICA014", "Seminario de Problemática Fueguina", true, 4);
+        Materia conservacionBiodiversidad = new Materia("BIO004", "Conservación de la Biodiversidad", true, 7);
+        Materia administracionAmbiental = new Materia("ICA008", "Administración Ambiental", true, 7);
+        Materia gestionAmbientesUrbanos = new Materia("ICA009", "Gestión de Ambientes Urbanos", true, 7);
+        Materia tallerMetodologia = new Materia("ICA010", "Taller de Metodología de la Investigación", true, 7);
+        Materia gestionAmbientesRurales = new Materia("ICA011", "Gestión de Ambientes Rurales", true, 8);
+        Materia gestionRecursosNaturales = new Materia("ICA012", "Gestión Integral de Recursos Naturales", true, 8);
+        Materia cambioGlobal = new Materia("ICA013", "Cambio Global", true, 8);
+        Materia seminarioFueguino = new Materia("ICA014", "Seminario de Problemática Fueguina", true, 8);
 
         // Crear materias del quinto año
-        Materia desarrolloEconomicoSostenible = new Materia("ECO002", "Desarrollo Económico Sostenible", true, 5);
-        Materia ordenamientoTerritorial = new Materia("ICA015", "Ordenamiento Ambiental del Territorio", true, 5);
-        Materia tallerEvaluacionImpacto = new Materia("ICA016", "Taller de Evaluación de Impacto Ambiental", true, 5);
-        Materia tallerTrabajoFinal = new Materia("ICA017", "Taller de Trabajo Final", true, 5);
-        Materia optativa1 = new Materia("OPT001", "Optativa I", false, 5);
-        Materia optativa2 = new Materia("OPT002", "Optativa II", false, 5);
+        Materia desarrolloEconomicoSostenible = new Materia("ECO002", "Desarrollo Económico Sostenible", true, 9);
+        Materia ordenamientoTerritorial = new Materia("ICA015", "Ordenamiento Ambiental del Territorio", true, 9);
+        Materia tallerEvaluacionImpacto = new Materia("ICA016", "Taller de Evaluación de Impacto Ambiental", true, 10);
+        Materia tallerTrabajoFinal = new Materia("ICA017", "Taller de Trabajo Final", true, 10);
+        Materia optativa1 = new Materia("OPT001", "Optativa I", false, 9);
+        Materia optativa2 = new Materia("OPT002", "Optativa II", false, 10);
 
         // Definir correlativas
         // Segundo año
@@ -273,7 +273,7 @@ public class DatosPrueba {
         planCienciasAmbientales.agregarMateriaObligatoria(optativa2);
 
         // Crear carreras
-        Carrera cienciasAmbientales = new Carrera("Licenciatura en Ciencias Ambientales", planCienciasAmbientales, 5);
+        Carrera cienciasAmbientales = new Carrera("Licenciatura en Ciencias Ambientales", planCienciasAmbientales, 2);
 
         // Agregar carreras al sistema
         sistema.getCarreras().add(cienciasAmbientales);
