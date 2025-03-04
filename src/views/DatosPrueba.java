@@ -52,6 +52,7 @@ public class DatosPrueba {
         // Definir correlativas
         // Primer año
         ayp1.agregarCorrelativa(epa);
+        analisisMatematico.agregarCorrelativa(algebra);
         
         // Segundo año
         arquitecturaComputadoras.agregarCorrelativa(elem1); // IF005 requiere IF001
@@ -232,7 +233,7 @@ public class DatosPrueba {
         optativa2.agregarCorrelativa(conservacionBiodiversidad); // OPT002 requiere BIO004
 
         // Crear planes de estudio
-        PlanEstudio planCienciasAmbientales = new PlanA("Licenciatura en Ciencias Ambientales");
+        PlanEstudio planCienciasAmbientales = new PlanB("Licenciatura en Ciencias Ambientales");
         planCienciasAmbientales.agregarMateriaObligatoria(introCienciasAmbientales);
         planCienciasAmbientales.agregarMateriaObligatoria(introSociedadCulturaAmbiente);
         planCienciasAmbientales.agregarMateriaObligatoria(matematica1);
@@ -466,7 +467,7 @@ public class DatosPrueba {
         practicaProfesionalSupervisada.agregarCorrelativa(instalacionesIndustriales); // PPSING requiere ING29
 
         // Crear planes de estudio
-        PlanEstudio planIngenieriaIndustrial = new PlanA("Ingeniería Industrial");
+        PlanEstudio planIngenieriaIndustrial = new PlanC("Ingeniería Industrial");
         planIngenieriaIndustrial.agregarMateriaObligatoria(introCalculo);
         planIngenieriaIndustrial.agregarMateriaObligatoria(introSociedadCulturaAmbienteIng);
         planIngenieriaIndustrial.agregarMateriaObligatoria(sistemasRepresentacion);
@@ -533,7 +534,7 @@ public class DatosPrueba {
 
 
 
-        //TURISMO
+            //TURISMO
          // Crear materias del primer año
          Materia introTurismo = new Materia("T01", "Introducción al Turismo", true, 1);
          Materia geografiaFisica = new Materia("T02", "Geografía Física", true, 1);
@@ -664,6 +665,175 @@ public class DatosPrueba {
          sistema.getPlanesEstudio().add(planTurismo);
 
          
+            // Crear materias del primer año
+        Materia introSociedadCulturaAmbienteSoc = new Materia("C1", "Introducción al Estudio de la Sociedad, la Cultura y el Ambiente", true, 1);
+        Materia introPensamientoPoliticoSocial = new Materia("C2", "Introducción al Pensamiento Político y Social", true, 1);
+        Materia epistemologiaCienciasSociales = new Materia("C3", "Epistemología de las Ciencias Sociales", true, 1);
+        Materia introCalculoSoc = new Materia("C4", "Introducción al Cálculo", true, 1);
+
+        // Crear materias del segundo año
+        Materia fundamentosSociologia = new Materia("C5", "Fundamentos de Sociología", true, 2);
+        Materia fundamentosCienciaPolitica = new Materia("C6", "Fundamentos de Ciencia Política", true, 2);
+        Materia introEconomiaSoc = new Materia("C7", "Introducción a la Economía", true, 2);
+        Materia historiaSocialGeneral = new Materia("C8", "Historia Social General", true, 2);
+
+        // Crear materias del tercer año
+        Materia teoriaSocial1 = new Materia("C9", "Teoría Social I", true, 3);
+        Materia historiaSocialLatinoamericana = new Materia("C10", "Historia Social Latinoamericana", true, 3);
+        Materia metodologiaInvestigacionCienciasSociales = new Materia("C11", "Metodología de Investigación en Ciencias Sociales", true, 3);
+        Materia macroeconomia1 = new Materia("C12", "Macroeconomía I", true, 3);
+
+        // Crear materias del cuarto año
+        Materia teoriaSocial2 = new Materia("C13", "Teoría Social II", true, 4);
+        Materia antropologiaSocial = new Materia("C14", "Antropología Social", true, 4);
+        Materia estadisticaSoc = new Materia("C15", "Estadística", true, 4);
+        Materia seminarioProblematicaFueguinaSoc = new Materia("C16", "Seminario de Problemática Fueguina", true, 4);
+        Materia examenIngles1Soc = new Materia("C17", "Examen Nivel I de Inglés", true, 4);
+
+        // Crear materias del quinto año
+        Materia teoriaSocial3 = new Materia("C18", "Teoría Social III", true, 5);
+        Materia conflictoCambioSocial = new Materia("C19", "Conflicto y Cambio Social", true, 5);
+        Materia metodologiaInvestigacion1 = new Materia("C20", "Metodología de la Investigación I", true, 5);
+        Materia historiaSocialArgentinaSoc = new Materia("C21", "Historia Social Argentina", true, 5);
+
+        // Crear materias del sexto año
+        Materia metodologiaInvestigacion2 = new Materia("C22", "Metodología de la Investigación II", true, 6);
+        Materia desarrolloSocialTerritorial = new Materia("C23", "Desarrollo Social y Territorial", true, 6);
+        Materia analisisSociedadArgentinaContemporanea = new Materia("C24", "Análisis de la Sociedad Argentina Contemporánea", true, 6);
+        Materia poblacionEstructuraSocial = new Materia("C25", "Población y Estructura Social", true, 6);
+
+        // Crear materias del séptimo año
+        Materia seminarioA = new Materia("C26", "Seminario A", true, 7);
+        Materia sociologiaCultura = new Materia("C27", "Sociología de la Cultura", true, 7);
+        Materia sociologiaInstituciones = new Materia("C28", "Sociología de las Instituciones", true, 7);
+        Materia sociologiaPolitica = new Materia("C29", "Sociología Política", true, 7);
+
+        // Crear materias del octavo año
+        Materia seminarioB = new Materia("C30", "Seminario B", true, 8);
+        Materia seminarioC = new Materia("C31", "Seminario C", true, 8);
+        Materia politicasPublicasProyectosIntervencionSocial = new Materia("C32", "Políticas Públicas y Proyectos de Intervención Social", true, 8);
+        Materia tallerInvestigacion1 = new Materia("C33", "Taller de Investigación I", true, 8);
+
+        // Crear materias del noveno año
+        Materia optativaA = new Materia("C34", "Optativa A", false, 9);
+        Materia optativaB = new Materia("C35", "Optativa B", false, 9);
+        Materia tallerInvestigacion2 = new Materia("C36", "Taller de Investigación II", true, 9);
+        Materia examenIngles2Soc = new Materia("C37", "Examen Nivel II de Inglés", true, 9);
+
+        // Crear materias del décimo año
+        Materia tallerIntegracionFinal = new Materia("C38", "Taller de Integración Final", true, 10);
+        Materia examenIngles3Soc = new Materia("C39", "Examen Nivel III de Inglés", true, 10);
+        Materia examenPortugues1Soc = new Materia("C40", "Examen Nivel I de Portugués", true, 10);
+
+        // Definir correlativas
+        // Segundo año
+        fundamentosSociologia.agregarCorrelativa(introPensamientoPoliticoSocial); // C5 requiere C2
+        fundamentosCienciaPolitica.agregarCorrelativa(introPensamientoPoliticoSocial); // C6 requiere C2
+
+        // Tercer año
+        teoriaSocial1.agregarCorrelativa(fundamentosSociologia); // C9 requiere C5
+        metodologiaInvestigacionCienciasSociales.agregarCorrelativa(epistemologiaCienciasSociales); // C11 requiere C3
+        macroeconomia1.agregarCorrelativa(introEconomiaSoc); // C12 requiere C7
+
+        // Cuarto año
+        teoriaSocial2.agregarCorrelativa(teoriaSocial1); // C13 requiere C9
+        antropologiaSocial.agregarCorrelativa(introPensamientoPoliticoSocial); // C14 requiere C2
+        estadisticaSoc.agregarCorrelativa(introCalculoSoc); // C15 requiere C4
+        seminarioProblematicaFueguinaSoc.agregarCorrelativa(fundamentosSociologia); // C16 requiere C5
+        seminarioProblematicaFueguinaSoc.agregarCorrelativa(metodologiaInvestigacionCienciasSociales); // C16 requiere C11
+
+        // Quinto año
+        teoriaSocial3.agregarCorrelativa(teoriaSocial2); // C18 requiere C13
+        conflictoCambioSocial.agregarCorrelativa(teoriaSocial1); // C19 requiere C9
+        metodologiaInvestigacion1.agregarCorrelativa(metodologiaInvestigacionCienciasSociales); // C20 requiere C11
+        historiaSocialArgentinaSoc.agregarCorrelativa(historiaSocialGeneral); // C21 requiere C8
+
+        // Sexto año
+        metodologiaInvestigacion2.agregarCorrelativa(metodologiaInvestigacion1); // C22 requiere C20
+        metodologiaInvestigacion2.agregarCorrelativa(estadisticaSoc); // C22 requiere C15
+        desarrolloSocialTerritorial.agregarCorrelativa(introSociedadCulturaAmbienteSoc); // C23 requiere C1
+        desarrolloSocialTerritorial.agregarCorrelativa(introPensamientoPoliticoSocial); // C23 requiere C2
+        analisisSociedadArgentinaContemporanea.agregarCorrelativa(teoriaSocial3); // C24 requiere C18
+        analisisSociedadArgentinaContemporanea.agregarCorrelativa(historiaSocialArgentinaSoc); // C24 requiere C21
+        poblacionEstructuraSocial.agregarCorrelativa(teoriaSocial1); // C25 requiere C9
+        poblacionEstructuraSocial.agregarCorrelativa(metodologiaInvestigacion1); // C25 requiere C20
+
+        // Séptimo año
+        seminarioA.agregarCorrelativa(metodologiaInvestigacion2); // C26 requiere C22
+        sociologiaCultura.agregarCorrelativa(teoriaSocial2); // C27 requiere C13
+        sociologiaCultura.agregarCorrelativa(antropologiaSocial); // C27 requiere C14
+        sociologiaInstituciones.agregarCorrelativa(teoriaSocial2); // C28 requiere C13
+        sociologiaPolitica.agregarCorrelativa(teoriaSocial2); // C29 requiere C13
+
+        // Octavo año
+        seminarioB.agregarCorrelativa(metodologiaInvestigacion2); // C30 requiere C22
+        seminarioC.agregarCorrelativa(metodologiaInvestigacion2); // C31 requiere C22
+        politicasPublicasProyectosIntervencionSocial.agregarCorrelativa(teoriaSocial1); // C32 requiere C9
+        politicasPublicasProyectosIntervencionSocial.agregarCorrelativa(fundamentosCienciaPolitica); // C32 requiere C6
+        tallerInvestigacion1.agregarCorrelativa(metodologiaInvestigacion2); // C33 requiere C22
+        tallerInvestigacion1.agregarCorrelativa(analisisSociedadArgentinaContemporanea); // C33 requiere C24
+
+        // Noveno año
+        optativaA.agregarCorrelativa(teoriaSocial1); // C34 requiere C9
+        optativaB.agregarCorrelativa(teoriaSocial1); // C35 requiere C9
+        tallerInvestigacion2.agregarCorrelativa(tallerInvestigacion1); // C36 requiere C33
+        examenIngles2Soc.agregarCorrelativa(examenIngles1Soc); // C37 requiere C17
+
+        // Décimo año
+        tallerIntegracionFinal.agregarCorrelativa(tallerInvestigacion2); // C38 requiere C36
+        examenIngles3Soc.agregarCorrelativa(examenIngles2Soc); // C39 requiere C37
+
+        // Crear planes de estudio
+        PlanEstudio planSociologia = new PlanA("Licenciatura en Sociología");
+        planSociologia.agregarMateriaObligatoria(introSociedadCulturaAmbienteSoc);
+        planSociologia.agregarMateriaObligatoria(introPensamientoPoliticoSocial);
+        planSociologia.agregarMateriaObligatoria(epistemologiaCienciasSociales);
+        planSociologia.agregarMateriaObligatoria(introCalculoSoc);
+        planSociologia.agregarMateriaObligatoria(fundamentosSociologia);
+        planSociologia.agregarMateriaObligatoria(fundamentosCienciaPolitica);
+        planSociologia.agregarMateriaObligatoria(introEconomiaSoc);
+        planSociologia.agregarMateriaObligatoria(historiaSocialGeneral);
+        planSociologia.agregarMateriaObligatoria(teoriaSocial1);
+        planSociologia.agregarMateriaObligatoria(historiaSocialLatinoamericana);
+        planSociologia.agregarMateriaObligatoria(metodologiaInvestigacionCienciasSociales);
+        planSociologia.agregarMateriaObligatoria(macroeconomia1);
+        planSociologia.agregarMateriaObligatoria(teoriaSocial2);
+        planSociologia.agregarMateriaObligatoria(antropologiaSocial);
+        planSociologia.agregarMateriaObligatoria(estadisticaSoc);
+        planSociologia.agregarMateriaObligatoria(seminarioProblematicaFueguinaSoc);
+        planSociologia.agregarMateriaObligatoria(examenIngles1Soc);
+        planSociologia.agregarMateriaObligatoria(teoriaSocial3);
+        planSociologia.agregarMateriaObligatoria(conflictoCambioSocial);
+        planSociologia.agregarMateriaObligatoria(metodologiaInvestigacion1);
+        planSociologia.agregarMateriaObligatoria(historiaSocialArgentinaSoc);
+        planSociologia.agregarMateriaObligatoria(metodologiaInvestigacion2);
+        planSociologia.agregarMateriaObligatoria(desarrolloSocialTerritorial);
+        planSociologia.agregarMateriaObligatoria(analisisSociedadArgentinaContemporanea);
+        planSociologia.agregarMateriaObligatoria(poblacionEstructuraSocial);
+        planSociologia.agregarMateriaObligatoria(seminarioA);
+        planSociologia.agregarMateriaObligatoria(sociologiaCultura);
+        planSociologia.agregarMateriaObligatoria(sociologiaInstituciones);
+        planSociologia.agregarMateriaObligatoria(sociologiaPolitica);
+        planSociologia.agregarMateriaObligatoria(seminarioB);
+        planSociologia.agregarMateriaObligatoria(seminarioC);
+        planSociologia.agregarMateriaObligatoria(politicasPublicasProyectosIntervencionSocial);
+        planSociologia.agregarMateriaObligatoria(tallerInvestigacion1);
+        planSociologia.agregarMateriaObligatoria(optativaA);
+        planSociologia.agregarMateriaObligatoria(optativaB);
+        planSociologia.agregarMateriaObligatoria(tallerInvestigacion2);
+        planSociologia.agregarMateriaObligatoria(examenIngles2Soc);
+        planSociologia.agregarMateriaObligatoria(tallerIntegracionFinal);
+        planSociologia.agregarMateriaObligatoria(examenIngles3Soc);
+        planSociologia.agregarMateriaObligatoria(examenPortugues1Soc);
+
+        // Crear carreras
+        Carrera sociologiaC = new Carrera("Licenciatura en Sociología", planSociologia, 10);
+
+        // Agregar carreras al sistema
+        sistema.getCarreras().add(sociologiaC);
+
+        // Agregar planes de estudio al sistema
+        sistema.getPlanesEstudio().add(planSociologia);
 
     }
 }

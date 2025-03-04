@@ -1,13 +1,22 @@
 package models;
 
+import java.util.List;
+
 public class PlanA extends PlanEstudio {
     public PlanA(String descripcion) {
-        super(descripcion); // Descripción personalizada
+        super(descripcion);
     }
 
     @Override
     public boolean puedeRecursarMateria(Estudiante estudiante, Materia materia) {
-        return materia.getCorrelativas().stream()
-                .allMatch(correlativa -> estudiante.getMateriasAprobadas().contains(correlativa));
+        List<Materia> correlativas = materia.getCorrelativas();
+        List<Materia> materiasAprobadas = estudiante.getMateriasAprobadas();
+        
+        for (Materia correlativa : correlativas) {
+            if (!materiasAprobadas.contains(correlativa)) {
+                return false;
+            }
+        }
+        return true;
     }
 }

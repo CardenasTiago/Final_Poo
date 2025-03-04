@@ -149,7 +149,6 @@ class GestionNotas extends JDialog {
         panelPrincipal.add(panelBotones, BorderLayout.SOUTH);
 
         add(panelPrincipal);
-
-        setVisible(true);
+        
     }
 }
