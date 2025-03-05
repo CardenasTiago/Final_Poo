@@ -36,7 +36,9 @@ public class Estudiante {
     }
 
     public void aprobarFinal(Materia materia) {
+        materiasInscriptas.remove(materia);
         materiasAprobados.add(materia);
+
     }
 
     @Override
@@ -47,7 +49,6 @@ public class Estudiante {
     public void registrarNota(Materia materia, double notaParcial) {
         materia.setNotaParcial(notaParcial);
 
-        // Si promociona, automáticamente aprueba la materia
         if (materia.getTienePromocion() && notaParcial >= 7) {
             aprobarPorPromocion(materia);
         }
@@ -67,7 +68,7 @@ public class Estudiante {
 
     public void aprobarPorPromocion(Materia materia) {
         cursadaAprobadas.add(materia);
-        materiasAprobados.add(materia); // La promoción implica aprobar el final
+        materiasAprobados.add(materia);
     }
 
     public boolean tieneParcialAprobado(Materia materia) {
@@ -92,7 +93,7 @@ public class Estudiante {
                 boolean correlativasAprobadas = materia.getCorrelativas().stream()
                         .allMatch(correlativa -> cursadaAprobadas.contains(correlativa));
                 if (correlativasAprobadas) {
-                    materiasInscriptas.add(materia); // Desbloquear materia
+                    materiasInscriptas.add(materia);
                 }
             }
         }

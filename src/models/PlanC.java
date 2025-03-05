@@ -15,13 +15,13 @@ public class PlanC extends PlanEstudio {
 
         for (Materia correlativa : correlativas) {
             if (!cursadasAprobadas.contains(correlativa)) {
-                return false; // Si no tiene la cursada aprobada de alguna correlativa, no puede recursar
+                return false;
             }
         }
 
-        // Verificar finales aprobados de los 5 cuatrimestres previos
+        // Verificar finales aprobados de los 3 cuatrimestres previos
         int cuatrimestreMateria = materia.getCuatrimestre();
-        int cuatrimestreInicio = Math.max(1, cuatrimestreMateria - 5); // Asegurarse de no ir antes del cuatrimestre 1
+        int cuatrimestreInicio = Math.max(1, cuatrimestreMateria - 5); // Asegurar que no sea negativo
 
         List<Materia> todasLasMaterias = estudiante.getCarrera().getTodasLasMaterias();
         List<Materia> finalesAprobados = estudiante.getMateriasAprobadas();

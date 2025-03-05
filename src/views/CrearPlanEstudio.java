@@ -24,60 +24,56 @@ public class CrearPlanEstudio extends JDialog {
     private final List<Materia> todasLasMaterias;
     private JComboBox<String> tipoPlanComboBox;
 
-    // Componentes para gestión de correlativas
     private JList<Materia> listaMaterias;
     private JList<Materia> listaCorrelativas;
     private DefaultListModel<Materia> materiasListModel;
     private DefaultListModel<Materia> correlativasListModel;
 
-    // Panel para mostrar las materias agregadas
     private JPanel panelMateriasAgregadas;
-    private DefaultTableModel tableModelMateriasAgregadas; // Referencia al modelo de la tabla de materias agregadas
+    private DefaultTableModel tableModelMateriasAgregadas;
 
-    // Referencia al panel de correlativas
+
     private JPanel panelCorrelativas;
-    private DefaultTableModel tableModelCorrelativas; // Referencia al modelo de la tabla de correlativas
+    private DefaultTableModel tableModelCorrelativas; 
 
     public CrearPlanEstudio(SistemaUniversitario sistema) {
         super(sistema, "Crear Plan de Estudio", true);
         this.sistema = sistema;
         this.todasLasMaterias = new ArrayList<>();
 
-        // Inicialización de componentes
         this.materiasListModel = new DefaultListModel<>();
         this.correlativasListModel = new DefaultListModel<>();
         this.listaMaterias = new JList<>(materiasListModel);
         this.listaCorrelativas = new JList<>(correlativasListModel);
 
-        // Configurar ventana
-        setLayout(new BorderLayout()); // Cambiado a BorderLayout para mejor distribución
+        setLayout(new BorderLayout()); 
         JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS)); // Organización vertical
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15)); // Margen para todo el contenido
-        mainPanel.setBackground(COLOR_FONDO); // Fondo gris muy oscuro
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS)); 
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15)); 
+        mainPanel.setBackground(COLOR_FONDO); 
 
-        // Panel para datos básicos del plan
+
         JPanel datosPlanPanel = crearPanelDatosPlan();
-        datosPlanPanel.setMinimumSize(new Dimension(700, 120)); // Tamaño mínimo
-        datosPlanPanel.setPreferredSize(new Dimension(700, 120)); // Tamaño preferido
+        datosPlanPanel.setMinimumSize(new Dimension(700, 120)); 
+        datosPlanPanel.setPreferredSize(new Dimension(700, 120)); 
         mainPanel.add(datosPlanPanel);
-        mainPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Espacio vertical
+        mainPanel.add(Box.createRigidArea(new Dimension(0, 10))); 
 
-        // Panel para gestión de materias
+  
         JPanel materiasPanel = crearPanelMaterias();
-        materiasPanel.setMinimumSize(new Dimension(700, 250)); // Tamaño mínimo
-        materiasPanel.setPreferredSize(new Dimension(700, 250)); // Tamaño preferido
+        materiasPanel.setMinimumSize(new Dimension(700, 250)); 
+        materiasPanel.setPreferredSize(new Dimension(700, 250)); 
         mainPanel.add(materiasPanel);
-        mainPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Espacio vertical
+        mainPanel.add(Box.createRigidArea(new Dimension(0, 10))); 
 
-        // Panel para mostrar materias agregadas
+        
         panelMateriasAgregadas = crearPanelMateriasAgregadas();
-        panelMateriasAgregadas.setMinimumSize(new Dimension(700, 200)); // Tamaño mínimo
-        panelMateriasAgregadas.setPreferredSize(new Dimension(700, 200)); // Tamaño preferido
+        panelMateriasAgregadas.setMinimumSize(new Dimension(700, 200)); 
+        panelMateriasAgregadas.setPreferredSize(new Dimension(700, 200)); 
         mainPanel.add(panelMateriasAgregadas);
-        mainPanel.add(Box.createRigidArea(new Dimension(0, 10))); // Espacio vertical
+        mainPanel.add(Box.createRigidArea(new Dimension(0, 10))); 
 
-        // Botón guardar plan
+
         JButton guardarPlanBtn = crearBoton("Guardar Plan", COLOR_BOTON, COLOR_HOVER);
         guardarPlanBtn.addActionListener(e -> guardarPlan());
         
@@ -86,16 +82,16 @@ public class CrearPlanEstudio extends JDialog {
         buttonPanel.add(guardarPlanBtn);
         mainPanel.add(buttonPanel);
 
-        // Añadir panel principal a un JScrollPane para permitir scroll si es necesario
+      
         JScrollPane scrollPane = new JScrollPane(mainPanel);
         scrollPane.setBorder(null);
         add(scrollPane, BorderLayout.CENTER);
 
-        // Configuración final de la ventana
-        setSize(800, 800); // Tamaño aumentado de la ventana
-        setMinimumSize(new Dimension(750, 700)); // Tamaño mínimo
+       
+        setSize(700, 700); 
+        setMinimumSize(new Dimension(750, 700)); 
         setLocationRelativeTo(sistema);
-        setResizable(true); // Permitir redimensionar, pero con tamaños mínimos establecidos
+        setResizable(true); 
         setVisible(true);
     }
 
@@ -111,11 +107,11 @@ public class CrearPlanEstudio extends JDialog {
         panel.setBackground(COLOR_FONDO);
 
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(8, 8, 8, 8); // Mayor espacio entre componentes
+        gbc.insets = new Insets(8, 8, 8, 8); 
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.anchor = GridBagConstraints.WEST;
 
-        // Nombre del plan
+     
         JLabel nombreLabel = new JLabel("Nombre del Plan:");
         nombreLabel.setForeground(COLOR_TEXTO);
         nombreLabel.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -127,7 +123,7 @@ public class CrearPlanEstudio extends JDialog {
         nombrePlanField.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(COLOR_BORDE, 1),
                 BorderFactory.createEmptyBorder(5, 5, 5, 5)));
-        nombrePlanField.setPreferredSize(new Dimension(300, 30)); // Establecer tamaño preferido
+        nombrePlanField.setPreferredSize(new Dimension(300, 30));
 
         gbc.gridx = 0; gbc.gridy = 0;
         gbc.weightx = 0.3;
@@ -148,7 +144,7 @@ public class CrearPlanEstudio extends JDialog {
         tipoPlanComboBox.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(COLOR_BORDE, 1),
                 BorderFactory.createEmptyBorder(5, 5, 5, 5)));
-        tipoPlanComboBox.setPreferredSize(new Dimension(300, 30)); // Establecer tamaño preferido
+        tipoPlanComboBox.setPreferredSize(new Dimension(300, 30)); 
 
         gbc.gridx = 0; gbc.gridy = 1;
         gbc.weightx = 0.3;
@@ -173,53 +169,53 @@ public class CrearPlanEstudio extends JDialog {
         panel.setBackground(COLOR_FONDO);
     
         GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(8, 8, 8, 8); // Mayor espacio
+        gbc.insets = new Insets(8, 8, 8, 8);
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.anchor = GridBagConstraints.WEST;
     
-        // Campos para agregar nueva materia
+       
         JTextField codigoField = new JTextField(10);
         JTextField nombreMateriaField = new JTextField(20);
         JCheckBox obligatoriaCheck = new JCheckBox("Obligatoria");
-        JCheckBox promocionableCheck = new JCheckBox("Promocionable"); // Nuevo JCheckBox para promoción
+        JCheckBox promocionableCheck = new JCheckBox("Promocionable"); 
         JSpinner cuatrimestreSpinner = new JSpinner(new SpinnerNumberModel(1, 1, 6, 1));
     
-        // Estilo y tamaño para componentes
+       
         codigoField.setPreferredSize(new Dimension(100, 30));
         nombreMateriaField.setPreferredSize(new Dimension(200, 30));
         cuatrimestreSpinner.setPreferredSize(new Dimension(80, 30));
     
-        // Configurar colores para los campos de texto
+        
         codigoField.setBackground(COLOR_BOTON);
         codigoField.setForeground(COLOR_TEXTO);
         nombreMateriaField.setBackground(COLOR_BOTON);
         nombreMateriaField.setForeground(COLOR_TEXTO);
     
-        // Configurar colores para los JCheckBox
+        
         obligatoriaCheck.setBackground(COLOR_FONDO);
         obligatoriaCheck.setForeground(COLOR_TEXTO);
         promocionableCheck.setBackground(COLOR_FONDO);
         promocionableCheck.setForeground(COLOR_TEXTO);
     
-        // Configurar colores para el JSpinner
+        
         cuatrimestreSpinner.setBackground(COLOR_BOTON);
     
-        // Acceder al campo de texto interno del JSpinner y configurar sus colores
+        
         JSpinner.DefaultEditor editor = (JSpinner.DefaultEditor) cuatrimestreSpinner.getEditor();
         JTextField textField = editor.getTextField();
-        textField.setForeground(COLOR_TEXTO); // Color del texto
-        textField.setBackground(COLOR_BOTON); // Color de fondo
-        textField.setCaretColor(COLOR_TEXTO); // Color del cursor
+        textField.setForeground(COLOR_TEXTO); 
+        textField.setBackground(COLOR_BOTON); 
+        textField.setCaretColor(COLOR_TEXTO); 
     
-        // Etiquetas con fuente establecida
+       
         JLabel codigoLabel = new JLabel("Código:");
-        codigoLabel.setForeground(COLOR_TEXTO); // Cambiar el color del texto a blanco
+        codigoLabel.setForeground(COLOR_TEXTO); 
     
         JLabel nombreLabel = new JLabel("Nombre:");
-        nombreLabel.setForeground(COLOR_TEXTO); // Cambiar el color del texto a blanco
+        nombreLabel.setForeground(COLOR_TEXTO); 
     
         JLabel cuatrimestreLabel = new JLabel("Cuatrimestre:");
-        cuatrimestreLabel.setForeground(COLOR_TEXTO); // Cambiar el color del texto a blanco
+        cuatrimestreLabel.setForeground(COLOR_TEXTO); 
     
         codigoLabel.setFont(new Font("Arial", Font.PLAIN, 12));
         nombreLabel.setFont(new Font("Arial", Font.PLAIN, 12));
@@ -227,10 +223,10 @@ public class CrearPlanEstudio extends JDialog {
         obligatoriaCheck.setFont(new Font("Arial", Font.PLAIN, 12));
         promocionableCheck.setFont(new Font("Arial", Font.PLAIN, 12));
     
-        // Panel para seleccionar correlativas
+      
         panelCorrelativas = crearPanelCorrelativas();
     
-        // Botón para agregar materia
+        
         JButton agregarMateriaBtn = crearBoton("Agregar Materia", COLOR_BOTON, COLOR_HOVER);
         agregarMateriaBtn.addActionListener(e -> {
             String codigo = codigoField.getText().trim();
@@ -252,11 +248,11 @@ public class CrearPlanEstudio extends JDialog {
                 return;
             }
     
-            // Crear la nueva materia
+            
             Materia nuevaMateria = new Materia(codigo, nombre, obligatoriaCheck.isSelected(), cuatrimestre);
             nuevaMateria.setTienePromocion(promocionableCheck.isSelected()); // Establecer si es promocionable
     
-            // Agregar correlativas seleccionadas
+            
             JScrollPane scrollPaneCorrelativas = (JScrollPane) panelCorrelativas.getComponent(0);
             JTable tablaCorrelativas = (JTable) scrollPaneCorrelativas.getViewport().getView();
             DefaultTableModel tableModel = (DefaultTableModel) tablaCorrelativas.getModel();
@@ -280,23 +276,23 @@ public class CrearPlanEstudio extends JDialog {
                 }
             }
     
-            // Agregar la nueva materia a la lista
+            
             todasLasMaterias.add(nuevaMateria);
     
-            // Actualizar la tabla de correlativas
+           
             actualizarTablaCorrelativas();
     
-            // Actualizar la tabla de materias agregadas
+            
             actualizarTablaMateriasAgregadas();
     
-            // Limpiar campos
+            
             codigoField.setText("");
             nombreMateriaField.setText("");
             obligatoriaCheck.setSelected(false);
-            promocionableCheck.setSelected(false); // Limpiar el checkbox de promoción
+            promocionableCheck.setSelected(false); 
             cuatrimestreSpinner.setValue(1);
     
-            // Limpiar selecciones en la tabla de correlativas
+            
             for (int i = 0; i < tableModel.getRowCount(); i++) {
                 tableModel.setValueAt(false, i, 0);
             }
@@ -304,7 +300,7 @@ public class CrearPlanEstudio extends JDialog {
             mostrarMensaje("Materia agregada con éxito.");
         });
     
-        // Primera fila
+        
         gbc.gridx = 0; gbc.gridy = 0;
         gbc.weightx = 0.1;
         panel.add(codigoLabel, gbc);
@@ -321,7 +317,7 @@ public class CrearPlanEstudio extends JDialog {
         gbc.weightx = 0.6;
         panel.add(nombreMateriaField, gbc);
     
-        // Segunda fila
+        
         gbc.gridx = 0; gbc.gridy = 1;
         gbc.weightx = 0.1;
         panel.add(cuatrimestreLabel, gbc);
@@ -336,14 +332,14 @@ public class CrearPlanEstudio extends JDialog {
     
         gbc.gridx = 3;
         gbc.weightx = 0.2;
-        panel.add(promocionableCheck, gbc); // Agregar el JCheckBox de promoción
+        panel.add(promocionableCheck, gbc); 
     
         gbc.gridx = 4;
         gbc.weightx = 0.3;
         gbc.anchor = GridBagConstraints.EAST;
         panel.add(agregarMateriaBtn, gbc);
     
-        // Panel de correlativas (tercera fila)
+        
         gbc.gridx = 0; gbc.gridy = 2;
         gbc.gridwidth = 5;
         gbc.weightx = 1.0;
@@ -356,7 +352,7 @@ public class CrearPlanEstudio extends JDialog {
     }
 
     private JPanel crearPanelCorrelativas() {
-        JPanel panel = new JPanel(new BorderLayout(10, 10)); // Añadir espacio
+        JPanel panel = new JPanel(new BorderLayout(10, 10)); 
         panel.setBorder(BorderFactory.createTitledBorder(
                 BorderFactory.createLineBorder(COLOR_BORDE, 1, true),
                 "Seleccionar Correlativas",
@@ -366,7 +362,7 @@ public class CrearPlanEstudio extends JDialog {
                 COLOR_TEXTO));
         panel.setBackground(COLOR_FONDO);
     
-        // Crear un modelo de tabla con columnas para selección, código y nombre
+        
         String[] columnNames = {"Seleccionar", "Código", "Nombre"};
         tableModelCorrelativas = new DefaultTableModel(columnNames, 0) {
             @Override
@@ -379,29 +375,29 @@ public class CrearPlanEstudio extends JDialog {
         table.setForeground(COLOR_TEXTO);
         table.setGridColor(COLOR_BORDE);
         table.setFont(new Font("Arial", Font.PLAIN, 12));
-        table.setRowHeight(25); // Filas más altas
+        table.setRowHeight(25); 
     
-        // Configurar ancho de columnas
+       
         table.getColumnModel().getColumn(0).setPreferredWidth(80);
         table.getColumnModel().getColumn(1).setPreferredWidth(100);
         table.getColumnModel().getColumn(2).setPreferredWidth(300);
     
-        // Llenar la tabla con las materias disponibles
+       
         for (Materia materia : todasLasMaterias) {
             Object[] row = {false, materia.getCodigo(), materia.getNombre()};
             tableModelCorrelativas.addRow(row);
         }
     
-        // Scroll para la tabla
+        
         JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.setPreferredSize(new Dimension(500, 120)); // Altura fija para el scrollpane
+        scrollPane.setPreferredSize(new Dimension(500, 120)); 
         panel.add(scrollPane, BorderLayout.CENTER);
     
         return panel;
     }
 
     private JPanel crearPanelMateriasAgregadas() {
-        JPanel panel = new JPanel(new BorderLayout(10, 10)); // Añadir espacio
+        JPanel panel = new JPanel(new BorderLayout(10, 10)); 
         panel.setBorder(BorderFactory.createTitledBorder(
                 BorderFactory.createLineBorder(COLOR_BORDE, 1, true),
                 "Materias Agregadas",
@@ -411,7 +407,7 @@ public class CrearPlanEstudio extends JDialog {
                 COLOR_TEXTO));
         panel.setBackground(COLOR_FONDO);
     
-        // Crear un modelo de tabla con columnas para código, nombre, obligatoria, cuatrimestre, correlativas y promocionable
+        
         String[] columnNames = {"Código", "Nombre", "Obligatoria", "Cuatrimestre", "Correlativas", "Promocion"};
         tableModelMateriasAgregadas = new DefaultTableModel(columnNames, 0);
         JTable table = new JTable(tableModelMateriasAgregadas);
@@ -419,23 +415,23 @@ public class CrearPlanEstudio extends JDialog {
         table.setForeground(COLOR_TEXTO);
         table.setGridColor(COLOR_BORDE);
         table.setFont(new Font("Arial", Font.PLAIN, 12));
-        table.setRowHeight(25); // Filas más altas
+        table.setRowHeight(25); 
     
-        // Configurar ancho de columnas
+       
         table.getColumnModel().getColumn(0).setPreferredWidth(100);
         table.getColumnModel().getColumn(1).setPreferredWidth(300);
         table.getColumnModel().getColumn(2).setPreferredWidth(100);
         table.getColumnModel().getColumn(3).setPreferredWidth(100);
-        table.getColumnModel().getColumn(4).setPreferredWidth(200); // Ancho para la columna de correlativas
-        table.getColumnModel().getColumn(5).setPreferredWidth(100); // Ancho para la columna de promocionable
+        table.getColumnModel().getColumn(4).setPreferredWidth(200); 
+        table.getColumnModel().getColumn(5).setPreferredWidth(100); 
     
-        // Llenar la tabla con las materias agregadas
+        
         for (Materia materia : todasLasMaterias) {
-            // Obtener los códigos de las correlativas
+            
             String correlativas = materia.getCorrelativas().stream()
                     .map(Materia::getCodigo)
                     .reduce((s1, s2) -> s1 + ", " + s2)
-                    .orElse(""); // Si no hay correlativas, devuelve una cadena vacía
+                    .orElse(""); 
     
             Object[] row = {
                 materia.getCodigo(),
@@ -443,14 +439,14 @@ public class CrearPlanEstudio extends JDialog {
                 materia.isObligatoria(),
                 materia.getCuatrimestre(),
                 correlativas,
-                materia.getTienePromocion() // Mostrar si es promocionable
+                materia.getTienePromocion() 
             };
             tableModelMateriasAgregadas.addRow(row);
         }
     
-        // Scroll para la tabla
+       
         JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.setPreferredSize(new Dimension(500, 150)); // Altura fija para el scrollpane
+        scrollPane.setPreferredSize(new Dimension(500, 150)); 
         panel.add(scrollPane, BorderLayout.CENTER);
     
         return panel;
@@ -464,11 +460,11 @@ public class CrearPlanEstudio extends JDialog {
         boton.setFocusPainted(false);
         boton.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(colorFondo.darker(), 2),
-                BorderFactory.createEmptyBorder(8, 16, 8, 16))); // Más padding
+                BorderFactory.createEmptyBorder(8, 16, 8, 16))); 
         boton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        boton.setPreferredSize(new Dimension(150, 35)); // Tamaño fijo para botones
+        boton.setPreferredSize(new Dimension(150, 35)); 
 
-        // Efecto hover
+       
         boton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 boton.setBackground(colorHover);
@@ -483,16 +479,16 @@ public class CrearPlanEstudio extends JDialog {
     }
     
     private void actualizarTablaMateriasAgregadas() {
-        // Limpiar la tabla
+      
         tableModelMateriasAgregadas.setRowCount(0);
     
-        // Llenar la tabla con las materias agregadas
+       
         for (Materia materia : todasLasMaterias) {
-            // Obtener los códigos de las correlativas
+        
             String correlativas = materia.getCorrelativas().stream()
                     .map(Materia::getCodigo)
                     .reduce((s1, s2) -> s1 + ", " + s2)
-                    .orElse(""); // Si no hay correlativas, devuelve una cadena vacía
+                    .orElse(""); 
     
             Object[] row = {
                 materia.getCodigo(),
@@ -500,17 +496,17 @@ public class CrearPlanEstudio extends JDialog {
                 materia.isObligatoria(),
                 materia.getCuatrimestre(),
                 correlativas,
-                materia.getTienePromocion() // Mostrar si es promocionable
+                materia.getTienePromocion() 
             };
             tableModelMateriasAgregadas.addRow(row);
         }
     }
 
     private void actualizarTablaCorrelativas() {
-        // Limpiar la tabla
+       
         tableModelCorrelativas.setRowCount(0);
     
-        // Llenar la tabla con las materias disponibles
+       
         for (Materia materia : todasLasMaterias) {
             Object[] row = {false, materia.getCodigo(), materia.getNombre()};
             tableModelCorrelativas.addRow(row);

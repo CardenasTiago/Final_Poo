@@ -5,23 +5,22 @@ import javax.swing.*;
 import models.*;
 
 class AgregarEstudiante extends JDialog {
-    // Lista para los estudiantes
+
     DefaultListModel<Estudiante> modeloLista;
+    JList<Estudiante> listaEstudiantes;
 
     public AgregarEstudiante(SistemaUniversitario parent) {
         super(parent, "Agregar Estudiante", true);
         setLayout(new BorderLayout(5, 5));
-        setSize(500, 350); // Tamaño fijo
-        setLocationRelativeTo(parent); // Centrar la ventana
+        setSize(500, 350); 
+        setLocationRelativeTo(parent); 
         getContentPane().setBackground(SistemaUniversitario.COLOR_FONDO);
 
-        // Panel de entrada de datos
         JPanel panelEntrada = new JPanel(new GridLayout(3, 2, 5, 5));
         panelEntrada.setBackground(SistemaUniversitario.COLOR_FONDO);
 
-        // Etiqueta "Legajo" con color blanco
         JLabel legajoLabel = new JLabel("Legajo:");
-        legajoLabel.setForeground(Color.WHITE); // Color blanco
+        legajoLabel.setForeground(Color.WHITE); 
         panelEntrada.add(legajoLabel);
 
         JTextField campoLegajo = new JTextField();
@@ -29,9 +28,8 @@ class AgregarEstudiante extends JDialog {
         campoLegajo.setForeground(Color.WHITE);
         panelEntrada.add(campoLegajo);
 
-        // Etiqueta "Nombre" con color blanco
         JLabel nombreLabel = new JLabel("Nombre:");
-        nombreLabel.setForeground(Color.WHITE); // Color blanco
+        nombreLabel.setForeground(Color.WHITE); 
         panelEntrada.add(nombreLabel);
 
         JTextField campoNombre = new JTextField();
@@ -44,37 +42,82 @@ class AgregarEstudiante extends JDialog {
             try {
                 int legajo = Integer.parseInt(campoLegajo.getText());
                 String nombre = campoNombre.getText();
-                Estudiante nuevoEstudiante = new Estudiante(legajo, nombre);
-                parent.getEstudiantes().add(nuevoEstudiante);
-                actualizarListaEstudiantes(parent);
-                JOptionPane.showMessageDialog(this, "Estudiante agregado exitosamente");
-                campoLegajo.setText("");
-                campoNombre.setText("");
+        
+                boolean legajoExistente = parent.getEstudiantes().stream()
+                        .anyMatch(estudiante -> estudiante.getLegajo() == legajo);
+        
+                if (legajoExistente) {
+                    JOptionPane.showMessageDialog(this, "Ya existe un estudiante con este legajo");
+                } else {
+                    Estudiante nuevoEstudiante = new Estudiante(legajo, nombre);
+                    parent.getEstudiantes().add(nuevoEstudiante);
+                    actualizarListaEstudiantes(parent);
+                    JOptionPane.showMessageDialog(this, "Estudiante agregado exitosamente");
+                    campoLegajo.setText("");
+                    campoNombre.setText("");
+                }
             } catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(this, "Legajo inválido");
             }
         });
 
-        panelEntrada.add(botonAgregar);
+        // Botón Eliminar
+        JButton botonEliminar = new JButton("Eliminar");
+        botonEliminar.addActionListener(e -> eliminarEstudiante(parent));
 
-        // Lista de estudiantes
+        JPanel panelBotones = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        panelBotones.setBackground(SistemaUniversitario.COLOR_FONDO);
+        panelBotones.add(botonAgregar);
+        panelBotones.add(botonEliminar);
+
+        JPanel panelCampos = new JPanel(new GridLayout(2, 2, 5, 5));
+        panelCampos.setBackground(SistemaUniversitario.COLOR_FONDO);
+        panelCampos.add(legajoLabel);
+        panelCampos.add(campoLegajo);
+        panelCampos.add(nombreLabel);
+        panelCampos.add(campoNombre);
+
+        JPanel panelSuperior = new JPanel(new BorderLayout());
+        panelSuperior.setBackground(SistemaUniversitario.COLOR_FONDO);
+        panelSuperior.add(panelCampos, BorderLayout.CENTER);
+        panelSuperior.add(panelBotones, BorderLayout.SOUTH);
+
         modeloLista = new DefaultListModel<>();
-        JList<Estudiante> listaEstudiantes = new JList<>(modeloLista);
+        listaEstudiantes = new JList<>(modeloLista);
         listaEstudiantes.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        listaEstudiantes.setBackground(SistemaUniversitario.COLOR_FONDO);
+        listaEstudiantes.setForeground(Color.WHITE);
         JScrollPane scrollPane = new JScrollPane(listaEstudiantes);
         
-        // Agregar el panel de entrada y la lista de estudiantes al diálogo
-        add(panelEntrada, BorderLayout.NORTH);
+        add(panelSuperior, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
 
-        // Inicializar la lista de estudiantes
         actualizarListaEstudiantes(parent);
 
-        // Ajustar tamaño y hacer visible el diálogo
         setVisible(true);
     }
 
-    // Método para actualizar la lista de estudiantes
+    private void eliminarEstudiante(SistemaUniversitario parent) {
+        Estudiante estudianteSeleccionado = listaEstudiantes.getSelectedValue();
+        
+        if (estudianteSeleccionado == null) {
+            JOptionPane.showMessageDialog(this, 
+                "Por favor, seleccione un estudiante de la lista para eliminar", 
+                "Selección requerida", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        int confirmacion = JOptionPane.showConfirmDialog(this, 
+            "¿Está seguro que desea eliminar al estudiante " + estudianteSeleccionado.toString() + "?",
+            "Confirmar Eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            
+        if (confirmacion == JOptionPane.YES_OPTION) {
+            parent.getEstudiantes().remove(estudianteSeleccionado);
+            actualizarListaEstudiantes(parent);
+            JOptionPane.showMessageDialog(this, "Estudiante eliminado exitosamente");
+        }
+    }
+
     private void actualizarListaEstudiantes(SistemaUniversitario parent) {
         modeloLista.clear();
         for (Estudiante estudiante : parent.getEstudiantes()) {

@@ -22,9 +22,9 @@ public class AgregarCarrera extends JDialog {
         this.sistema = sistema;
 
         setLayout(new GridBagLayout());
-        setSize(800, 300); // Tamaño fijo
-        setMinimumSize(new Dimension(500, 300)); // Tamaño mínimo
-        setLocationRelativeTo(sistema); // Centrar la ventana
+        setSize(800, 300); 
+        setMinimumSize(new Dimension(500, 300)); 
+        setLocationRelativeTo(sistema);
         getContentPane().setBackground(COLOR_FONDO);
 
         GridBagConstraints gbc = new GridBagConstraints();
@@ -58,14 +58,12 @@ public class AgregarCarrera extends JDialog {
         optativasRequeridas = new JSpinner(new SpinnerNumberModel(2, 0, 10, 1));
         optativasRequeridas.setBackground(COLOR_BOTON);
 
-        // Acceder al campo de texto interno del JSpinner y configurar sus colores
         JSpinner.DefaultEditor editor = (JSpinner.DefaultEditor) optativasRequeridas.getEditor();
         JTextField textField = editor.getTextField();
-        textField.setForeground(COLOR_TEXTO); // Color del texto
-        textField.setBackground(COLOR_BOTON); // Color de fondo
-        textField.setCaretColor(COLOR_TEXTO); // Color del cursor
+        textField.setForeground(COLOR_TEXTO); 
+        textField.setBackground(COLOR_BOTON); 
+        textField.setCaretColor(COLOR_TEXTO); 
 
-        // Agregar componentes al panel de datos
         GridBagConstraints gbcDatos = new GridBagConstraints();
         gbcDatos.insets = new Insets(5, 5, 5, 5);
         gbcDatos.fill = GridBagConstraints.HORIZONTAL;
@@ -85,18 +83,15 @@ public class AgregarCarrera extends JDialog {
         gbcDatos.gridx = 1;
         datosCarreraPanel.add(optativasRequeridas, gbcDatos);
 
-        // Botón guardar carrera
         JButton guardarCarreraBtn = crearBoton("Guardar Carrera");
         guardarCarreraBtn.addActionListener(e -> guardarCarrera());
 
-        // Agregar todos los paneles a la ventana principal
         gbc.gridx = 0; gbc.gridy = 0;
         add(datosCarreraPanel, gbc);
 
         gbc.gridy = 1;
         add(guardarCarreraBtn, gbc);
 
-        // Configuración final de la ventana
         setVisible(true);
     }
 
