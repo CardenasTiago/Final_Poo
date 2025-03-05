@@ -51,6 +51,11 @@ public class Estudiante {
         if (materia.getTienePromocion() && notaParcial >= 7) {
             aprobarPorPromocion(materia);
         }
+        else{
+            if(materia.getNotaParcial() >= 4){
+                aprobarCursada(materia);
+            }
+        }
     }
 
     public void registrarNotaFinal(Materia materia, double notaFinal) {

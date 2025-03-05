@@ -10,10 +10,10 @@ public class PlanA extends PlanEstudio {
     @Override
     public boolean puedeRecursarMateria(Estudiante estudiante, Materia materia) {
         List<Materia> correlativas = materia.getCorrelativas();
-        List<Materia> materiasAprobadas = estudiante.getMateriasAprobadas();
+        List<Materia> cursadasAprobadas = estudiante.getCursadaAprobadas();
         
         for (Materia correlativa : correlativas) {
-            if (!materiasAprobadas.contains(correlativa)) {
+            if (!cursadasAprobadas.contains(correlativa)) {
                 return false;
             }
         }

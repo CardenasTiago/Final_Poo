@@ -145,6 +145,10 @@ public class DatosPrueba {
         // Agregar planes de estudio al sistema
         sistema.getPlanesEstudio().add(LicSistemas);
 
+        Estudiante estudiante1 = new Estudiante(001,"Tiago Cardenas");
+        estudiante1.setCarrera(sistemas);
+        estudiante1.aprobarCursada(algebra);
+
 
         Materia introCienciasAmbientales = new Materia("ICA001", "Introducción a las Ciencias Ambientales", true, 1);
         Materia introSociedadCulturaAmbiente = new Materia("ICA002", "Introducción al Estudio de la Sociedad, la Cultura y el Ambiente", true, 1);

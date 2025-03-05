@@ -125,12 +125,6 @@ class GestionNotas extends JDialog {
             estudianteSeleccionado.registrarNota(materiaSeleccionada, notaParcial);
             estudianteSeleccionado.registrarNotaFinal(materiaSeleccionada, notaFinal);
 
-            // Si la materia es promocionable y la nota parcial es suficiente, marcar como promocionada
-            if (checkPromocion.isSelected() && notaParcial >= 7) {
-                materiaSeleccionada.setPromocionado(true);
-                estudianteSeleccionado.aprobarPorPromocion(materiaSeleccionada);
-            }
-
             JOptionPane.showMessageDialog(this, "Notas guardadas correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
         });
 
