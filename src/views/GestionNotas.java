@@ -110,22 +110,24 @@ class GestionNotas extends JDialog {
         botonGuardar.addActionListener(e -> {
             Estudiante estudianteSeleccionado = (Estudiante) comboEstudiantes.getSelectedItem();
             Materia materiaSeleccionada = (Materia) comboMaterias.getSelectedItem();
+        
 
-            
             if (estudianteSeleccionado == null || materiaSeleccionada == null) {
                 JOptionPane.showMessageDialog(this, "Debe seleccionar un estudiante y una materia.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
-
-           
+        
             double notaParcial = (double) spinnerParcial.getValue();
             double notaFinal = (double) spinnerFinal.getValue();
-
-            
-            estudianteSeleccionado.registrarNota(materiaSeleccionada, notaParcial);
-            estudianteSeleccionado.registrarNotaFinal(materiaSeleccionada, notaFinal);
-
-            JOptionPane.showMessageDialog(this, "Notas guardadas correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+        
+            try {
+                estudianteSeleccionado.registrarNota(materiaSeleccionada, notaParcial);
+                estudianteSeleccionado.registrarNotaFinal(materiaSeleccionada, notaFinal);
+        
+                JOptionPane.showMessageDialog(this, "Notas guardadas correctamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            } catch (IllegalStateException ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
         });
 
         

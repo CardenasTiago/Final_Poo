@@ -60,6 +60,13 @@ public class Estudiante {
     }
 
     public void registrarNotaFinal(Materia materia, double notaFinal) {
+        boolean correlativasAprobadas = materia.getCorrelativas().stream()
+                .allMatch(correlativa -> this.materiasAprobados.contains(correlativa));
+    
+        if (!correlativasAprobadas) {
+            throw new IllegalStateException("No se puede aprobar el final. Debe aprobar primero las correlativas.");
+        }
+    
         materia.setNotaFinal(notaFinal);
         if (notaFinal >= 4) {
             aprobarFinal(materia);
