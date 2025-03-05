@@ -139,15 +139,43 @@ public class DatosPrueba {
         // Crear carreras
         Carrera sistemas = new Carrera("Licenciatura en Sistemas", LicSistemas, 0);
 
+        Estudiante estudiante1 = new Estudiante(001, "Tiago Cardenas");
+        estudiante1.setCarrera(sistemas);
+
+        // Aprobar materias del primer año
+        estudiante1.aprobarCursada(elem1);
+        estudiante1.aprobarCursada(epa);
+        estudiante1.aprobarCursada(algebra);
+        estudiante1.aprobarCursada(ayp1);
+        estudiante1.aprobarCursada(elmd);
+        estudiante1.aprobarCursada(analisisMatematico);
+
+        // Aprobar finales de algunas materias del primer año
+        estudiante1.aprobarFinal(elem1);
+        estudiante1.aprobarFinal(epa);
+        estudiante1.aprobarFinal(algebra);
+
+        // Aprobar materias del segundo año
+        estudiante1.aprobarCursada(sistemasOrganizaciones);
+        estudiante1.aprobarCursada(arquitecturaComputadoras);
+        estudiante1.aprobarCursada(ayp2);
+        estudiante1.aprobarCursada(estadistica);
+
+        // Aprobar finales de algunas materias del segundo año
+        estudiante1.aprobarFinal(sistemasOrganizaciones);
+        estudiante1.aprobarFinal(arquitecturaComputadoras);
+
+
         // Agregar carreras al sistema
         sistema.getCarreras().add(sistemas);
 
         // Agregar planes de estudio al sistema
         sistema.getPlanesEstudio().add(LicSistemas);
+        
+        // Agregar estudiante
+        sistema.getEstudiantes().add(estudiante1);
 
-        Estudiante estudiante1 = new Estudiante(001,"Tiago Cardenas");
-        estudiante1.setCarrera(sistemas);
-        estudiante1.aprobarCursada(algebra);
+
 
 
         Materia introCienciasAmbientales = new Materia("ICA001", "Introducción a las Ciencias Ambientales", true, 1);
@@ -280,12 +308,38 @@ public class DatosPrueba {
         // Crear carreras
         Carrera cienciasAmbientales = new Carrera("Licenciatura en Ciencias Ambientales", planCienciasAmbientales, 2);
 
+        Estudiante estudiante2 = new Estudiante(002, "Carina Ballan");
+        estudiante1.setCarrera(cienciasAmbientales);
+
+        // Aprobar materias del primer año
+        estudiante1.aprobarCursada(introCienciasAmbientales);
+        estudiante1.aprobarCursada(introSociedadCulturaAmbiente);
+        estudiante1.aprobarCursada(matematica1);
+        estudiante1.aprobarCursada(quimicaGeneral);
+
+        // Aprobar finales de algunas materias del primer año
+        estudiante1.aprobarFinal(introCienciasAmbientales);
+        estudiante1.aprobarFinal(introSociedadCulturaAmbiente);
+        estudiante1.aprobarFinal(matematica1);
+
+        // Aprobar materias del segundo año
+        estudiante1.aprobarCursada(introProblematicaAmbiental);
+        estudiante1.aprobarCursada(fisica1);
+        estudiante1.aprobarCursada(matematica2);
+        estudiante1.aprobarCursada(quimicaOrganica);
+
+        // Aprobar finales de algunas materias del segundo año
+        estudiante1.aprobarFinal(introProblematicaAmbiental);
+        estudiante1.aprobarFinal(fisica1);
+
         // Agregar carreras al sistema
         sistema.getCarreras().add(cienciasAmbientales);
 
         // Agregar planes de estudio al sistema
         sistema.getPlanesEstudio().add(planCienciasAmbientales);
 
+        //Agregas Estudiante
+        sistema.getEstudiantes().add(estudiante2);
 
 
         //INGENIERIA
