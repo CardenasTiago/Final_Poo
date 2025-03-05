@@ -36,22 +36,6 @@ public class Carrera {
     }
 
     /**
-     * Agrega una materia obligatoria a la carrera.
-     * @param materia La materia obligatoria a agregar.
-     */
-    public void agregarMateriaObligatoria(Materia materia) {
-        planEstudio.agregarMateriaObligatoria(materia);
-    }
-
-    /**
-     * Agrega una materia optativa a la carrera.
-     * @param materia La materia optativa a agregar.
-     */
-    public void agregarMateriaOptativa(Materia materia) {
-        planEstudio.agregarMateriaOptativa(materia);
-    }
-
-    /**
      * Obtiene las materias disponibles para que un estudiante se inscriba.
      * @param estudiante El estudiante que desea inscribirse.
      * @return Lista de materias disponibles.
